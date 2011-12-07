@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -7,7 +7,7 @@
 float:left;
 margin-left: 10px;
 list-style-type:none;
-font-size: 2em;
+font-size: 1em;
 }
 </style>
 <div id="menu">
@@ -17,11 +17,11 @@ font-size: 2em;
 		
 			<li><a href="logout">Deconnexion</a></li>
 			<li> - </li>
-			
+			    
 			<li><a href="">Information membre</a></li>
 			<li> | </li>
 			
-			<li> Connecté sous <%=session.getAttribute("login").toString() %> </li>
+			<li> ConnectÃ© sous <%=session.getAttribute("login").toString() %> </li>
 			
 			<%} else {%>
 			<li><a href="accueil.jsp">Accueil</a></li>
