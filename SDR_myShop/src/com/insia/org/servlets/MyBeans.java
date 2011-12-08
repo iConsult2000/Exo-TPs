@@ -13,20 +13,20 @@ import java.io.Serializable;
 public class MyBeans {
 	private static final long serialVersionUID = 1L;
 	
-	private String nom;
+	private String item;
 	private Integer prix;
 	private String description;
 	/**
-	 * @return the nom
+	 * @return the item
 	 */
-	public String getNom() {
-		return nom;
+	public String getItem() {
+		return item;
 	}
 	/**
-	 * @param nom the nom to set
+	 * @param item the item to set
 	 */
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setItem(String item) {
+		this.item = item;
 	}
 	/**
 	 * @return the prix
