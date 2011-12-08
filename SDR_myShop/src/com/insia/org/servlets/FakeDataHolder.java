@@ -1,4 +1,4 @@
-package org.insia.utils;
+package com.insia.org.servlets;
 
 import java.lang.reflect.Field;
 import java.util.*;

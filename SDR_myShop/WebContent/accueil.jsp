@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>e-Web-shopping SDR</title>
 
 </head>
 <body>
@@ -20,7 +20,7 @@
 			for (int i = 0; i < mesCookies.length; i++) {
 				// S'il existeun Cookie nommé“nomCookie"
 				if (mesCookies[i].getName().equals("logcookie1")) {
-					// J’ai trouvéle cookie que je cherchais, j’affiche sa valeur:
+					// J’ai trouvéle cookie que je cherchais, je garde sa valeur:
 					String login = mesCookies[i].getValue();
 
 					//3. Mise en attribut de session des param requetes

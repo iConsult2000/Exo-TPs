@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
+
+<%if (session.getAttribute("login") != null) { %>
 	<ul id="item">
 		<li><jsp:useBean id="myiPhone4S"
 				class="com.insia.org.servlets.MyBeans" scope="session">
@@ -90,6 +92,7 @@
 			</jsp:useBean></li>
 
 	</ul>
+	<%} %>
 </body>
 </html>
 <style type="text/css">
