@@ -40,8 +40,7 @@
 
 	</div>
 	<div>
-		<p><center><h3>Do your shopping</h3></center>
-		</p>
+		
 		<%@ include file="shopreal.jsp" %>
 		
 	</div>
