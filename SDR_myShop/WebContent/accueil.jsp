@@ -41,7 +41,7 @@
 	</div>
 	<div>
 		
-		<%@ include file="shopreal.jsp" %>
+		<%@ include file="/WEB-INF/shopreal.jsp" %>
 		
 	</div>
 </body>

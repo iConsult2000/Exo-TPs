@@ -10,12 +10,24 @@ import java.io.Serializable;
  * @author sdacalor
  *
  */
-public class MyBeans {
+public class MyBeans implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String item;
 	private Integer prix;
 	private String description;
+	
+	
+	public MyBeans () {}
+	
+	public MyBeans(String item, Integer prix, String description){
+		this.item = item;
+		this.prix = prix;
+		this.description = description;
+	}
+	
+	
+	
 	/**
 	 * @return the item
 	 */
