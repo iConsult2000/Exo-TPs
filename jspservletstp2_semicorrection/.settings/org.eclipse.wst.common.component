@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="jspservletstp2_semicorrection">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="jspservletstp2_semicorrection"/>
+        <property name="java-output-path" value="/jspservletstp2_semicorrection/build/classes"/>
+    </wb-module>
+</project-modules>
