@@ -110,7 +110,7 @@ public class ShoprealServlet extends HttpServlet {
 			
 			
 			//Return to shopping
-			request.getRequestDispatcher("/myaccueil.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/myaccueil.jsp").forward(request, response);
 			
 			
 			
