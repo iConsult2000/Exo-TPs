@@ -56,12 +56,7 @@ public class ShoprealServlet extends HttpServlet {
 			if (database.createTable("Products") != null) {
 				//Completer la base de données Products
 				List<MyBeans> StoreProducts = (List<MyBeans>) database.get("Products");
-//				StoreProducts.add(new MyBeans("id005", 75, "wave3 desire"));
-//				StoreProducts.add(new MyBeans("id004", 5, "nokia 800"));
-//				StoreProducts.add(new MyBeans("id003", 15, "Galaxy note"));
-//				StoreProducts.add(new MyBeans("id002", 745, "Black Berry Curve"));
-//				StoreProducts.add(new MyBeans("id001", 250, "iPhone 4S"));
-				
+			
 				
 				MyBeans id001 = new MyBeans("id001", 250, "iPhone 4S");
 				System.out.println(id001.getDescription());
@@ -84,8 +79,7 @@ public class ShoprealServlet extends HttpServlet {
 				session.setAttribute("id004", id004);
 				session.setAttribute("id005", id005);
 				
-//				RequestDispatcher dispatch = request.getRequestDispatcher("./accueil.jsp");
-//				dispatch.forward(request, response);
+
 				
 				//Create the cart
 				database.createTable("Cart");
