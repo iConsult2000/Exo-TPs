@@ -94,6 +94,8 @@ public class ShoprealServlet extends HttpServlet {
 				
 			List<MyBeans> cart = (List<MyBeans>) database.get("Cart");
 			
+			//Si il y a deux users, ne pas stocker Cart dans la base
+			
 			//Retrieve the product using the bean id by Form submit
 			MyBeans resultparamBean = (MyBeans) database.findOne("Products", "item", request.getParameter("item"));
 			//add item to cart
