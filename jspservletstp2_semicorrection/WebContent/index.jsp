@@ -27,7 +27,7 @@
 		</div>
 
 		<footer>
-			<p>&copy; Travaux pratiques - INSIA - Doc4web</p>
+			<p>&copy; Travaux pratiques - INGESUP - Doc4web</p>
 		</footer>
 
 	</div>
