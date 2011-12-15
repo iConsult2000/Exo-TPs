@@ -51,11 +51,11 @@ public class LoginServlet extends HttpServlet {
 		String login = "";
 		String passwd = "";
 
-		// 2. Création Session Http à partir de l'objet Request
+		// 2. Crï¿½ation Session Http ï¿½ partir de l'objet Request
 		HttpSession session = request.getSession();
 
 
-			// 1. Récupération paramètre de requete
+			// 1. Rï¿½cupï¿½ration paramï¿½tre de requete
 			login = request.getParameter("myname");
 			passwd = request.getParameter("mypwd");
 
@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("login", login);
 
 
-			//4. Je suis loggé
+			//4. Je suis loggï¿½
 
 
 			Cookie c1 = new Cookie("logcookie1", login);
@@ -74,12 +74,12 @@ public class LoginServlet extends HttpServlet {
 
 
 
-			System.out.println("Vous êtes loggé manuellement");
+			System.out.println("Vous ï¿½tes loggï¿½ manuellement");
 
 			// 4. Redirection vers JSP
 			// 3. Initialisation du dispatcher
 			
-			response.sendRedirect("accueil.jsp");
+			response.sendRedirect("shopreal");
 
 		}
 	

@@ -9,7 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSTL"/>
-	<classpathentry kind="lib" path="/home/sdacalor/Ide/addons/apache-tomcat-7.0.22/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="/home/sdacalor/Ide/addons/apache-tomcat-7.0.22/lib/catalina.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Servlet"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

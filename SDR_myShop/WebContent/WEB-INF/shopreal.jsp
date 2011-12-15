@@ -27,6 +27,7 @@
 <body>
 
 	
+	
 
 	<div>
 
@@ -41,10 +42,10 @@
 				A partir de 250€	
 			
 			<%-- initialize bean properties --%>
-				<jsp:useBean id="id001"	class="com.insia.org.servlets.MyBeans" scope="session" />
-				<jsp:setProperty name="id001" property="item" value="iPhone4S" /> 
-				<jsp:setProperty name="id001" property="prix" value="250" />
-				<jsp:setProperty name="id001" property="description" value="iPhone 4S new" /> 
+				<jsp:useBean id="id001"	type="com.insia.org.servlets.MyBeans" scope="session" />
+				<jsp:getProperty name="id001" property="item"  /> 
+				<jsp:getProperty name="id001" property="prix"  />
+				<jsp:getProperty name="id001" property="description"  /> 
 			
 			<%-- this body is executed only if the bean is created --%>
 				<h3><jsp:getProperty property="description" name="id001" /></h3> 
@@ -59,10 +60,10 @@
 			<li><center><img src="./WEB-PNG/Curve-9360-front-medium.png" alt="shopping" /> <br>
 			A partir de 745€
 				<%-- intialize bean properties --%>
-				<jsp:useBean id="id002"	class="com.insia.org.servlets.MyBeans" scope="session" />
-					<jsp:setProperty name="id002" property="prix" value="745" />
-					<jsp:setProperty name="id002" property="item"	value="Curve9360" />
-					<jsp:setProperty name="id002" property="description" value="Black Berry Curve" />
+				<jsp:useBean id="id002"	type="com.insia.org.servlets.MyBeans" scope="session" />
+					<jsp:getProperty name="id002" property="prix" />
+					<jsp:getProperty name="id002" property="item" />
+					<jsp:getProperty name="id002" property="description" />
 				
 			
 			<%-- this body is executed only if the bean is created --%>	
@@ -77,10 +78,10 @@
 			<li><center><img src="./PNG/samsung-galaxy-note-medium_front..png" alt="shopping" /> <br>
 			A partir de 15€
 			<%-- intialize bean properties --%>
-				<jsp:useBean id="id003" class="com.insia.org.servlets.MyBeans" scope="session" />
-					<jsp:setProperty name="id003" property="prix" value="15" />
-					<jsp:setProperty name="id003" property="item"	value="GalaxyNote" />
-					<jsp:setProperty name="id003" property="description"	value="Galaxy note" />
+				<jsp:useBean id="id003" type="com.insia.org.servlets.MyBeans" scope="session" />
+					<jsp:getProperty name="id003" property="prix"  />
+					<jsp:getProperty name="id003" property="item" />
+					<jsp:getProperty name="id003" property="description" />
 				
 			
 			
@@ -98,10 +99,10 @@
 			A partir de 5€
 								
 				<%-- intialize bean properties --%>
-				<jsp:useBean id="id004"	class="com.insia.org.servlets.MyBeans" scope="session" />
-					<jsp:setProperty name="id004" property="prix" value="5" />
-					<jsp:setProperty name="id004" property="item" value="nokia800" />
-					<jsp:setProperty name="id004" property="description" value="nokia 800" />
+				<jsp:useBean id="id004"	type="com.insia.org.servlets.MyBeans" scope="session" />
+					<jsp:getProperty name="id004" property="prix"  />
+					<jsp:getProperty name="id004" property="item"  />
+					<jsp:getProperty name="id004" property="description"  />
 				
 				
 				<%-- this body is executed only if the bean is created --%>
@@ -119,10 +120,10 @@
 		A partir de 75€
 		
 				<%-- intialize bean properties --%>
-				<jsp:useBean id="id005"	class="com.insia.org.servlets.MyBeans" scope="session"/>
-				<jsp:setProperty name="id005" property="prix" value="75" />
-				<jsp:setProperty name="id005" property="item" value="wave 3" />
-				<jsp:setProperty name="id005" property="description" value="wave3 desire" />
+				<jsp:useBean id="id005"	type="com.insia.org.servlets.MyBeans" scope="session"/>
+				<jsp:getProperty name="id005" property="prix" />
+				<jsp:getProperty name="id005" property="item" />
+				<jsp:getProperty name="id005" property="description" />
 		
 			
 			<%-- this body is executed only if the bean is created --%>

@@ -40,8 +40,9 @@
 
 	</div>
 	<div>
-		
-		<%@ include file="/WEB-INF/shopreal.jsp" %>
+	
+		<%@ include file="/dummyshop.jsp" %>
+	
 		
 	</div>
 </body>

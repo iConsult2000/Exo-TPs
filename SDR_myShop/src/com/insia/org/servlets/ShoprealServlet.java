@@ -56,19 +56,34 @@ public class ShoprealServlet extends HttpServlet {
 			if (database.createTable("Products") != null) {
 				//Completer la base de données Products
 				List<MyBeans> StoreProducts = (List<MyBeans>) database.get("Products");
-				StoreProducts.add(new MyBeans("id005", 75, "wave3 desire"));
-				StoreProducts.add(new MyBeans("id004", 5, "nokia 800"));
-				StoreProducts.add(new MyBeans("id003", 15, "Galaxy note"));
-				StoreProducts.add(new MyBeans("id002", 745, "Black Berry Curve"));
-				StoreProducts.add(new MyBeans("id001", 250, "iPhone 4S"));
-//				MyBeans id001 = (MyBeans) session.getAttribute("id001");
-//				System.out.println(id001.getDescription());
-//				StoreProducts.add( (MyBeans) session.getAttribute("id001"));
-//				StoreProducts.add( (MyBeans) session.getAttribute("id002"));
-//				StoreProducts.add( (MyBeans) session.getAttribute("id003"));
-//				StoreProducts.add( (MyBeans) session.getAttribute("id004"));
-//				StoreProducts.add( (MyBeans) session.getAttribute("id005"));
+//				StoreProducts.add(new MyBeans("id005", 75, "wave3 desire"));
+//				StoreProducts.add(new MyBeans("id004", 5, "nokia 800"));
+//				StoreProducts.add(new MyBeans("id003", 15, "Galaxy note"));
+//				StoreProducts.add(new MyBeans("id002", 745, "Black Berry Curve"));
+//				StoreProducts.add(new MyBeans("id001", 250, "iPhone 4S"));
+				
+				
+				MyBeans id001 = new MyBeans("id001", 250, "iPhone 4S");
+				System.out.println(id001.getDescription());
+				MyBeans id002 = new MyBeans("id002", 745, "Black Berry Curve");
+				MyBeans id003 = new MyBeans("id003", 15, "Galaxy note");
+				MyBeans id004 = new MyBeans("id004", 5, "nokia 800");
+				MyBeans id005 = new MyBeans("id005", 75, "wave3 desire");
+				
+				//Add in datrabase
+				StoreProducts.add(id001);
+				StoreProducts.add(id002);
+				StoreProducts.add(id003);
+				StoreProducts.add(id004);
+				StoreProducts.add(id005);
 //				
+				//Publish them in session
+				session.setAttribute("id001", id001);
+				session.setAttribute("id002", id002);
+				session.setAttribute("id003", id003);
+				session.setAttribute("id004", id004);
+				session.setAttribute("id005", id005);
+				
 //				RequestDispatcher dispatch = request.getRequestDispatcher("./accueil.jsp");
 //				dispatch.forward(request, response);
 				
@@ -78,13 +93,13 @@ public class ShoprealServlet extends HttpServlet {
 			}
 				
 			List<MyBeans> cart = (List<MyBeans>) database.get("Cart");
+			
+			//Retrieve the product using the bean id by Form submit
 			MyBeans resultparamBean = (MyBeans) database.findOne("Products", "item", request.getParameter("item"));
-			
-			System.out.println(resultparamBean.getDescription());
-			
 			//add item to cart
 			cart.add(resultparamBean);
 			
+				
 			
 			System.out.println("What is in cart :");
 			Iterator<MyBeans> e = cart.iterator();
@@ -95,7 +110,7 @@ public class ShoprealServlet extends HttpServlet {
 			
 			
 			//Return to shopping
-			response.sendRedirect("./accueil.jsp");
+			request.getRequestDispatcher("/myaccueil.jsp").forward(request, response);
 			
 			
 			
