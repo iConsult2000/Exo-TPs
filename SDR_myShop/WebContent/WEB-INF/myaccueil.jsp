@@ -42,6 +42,7 @@
 	<div>
 	
 		<%@ include file="/WEB-INF/shopreal.jsp" %>
+		
 	
 		
 	</div>

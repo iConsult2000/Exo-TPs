@@ -1,6 +1,7 @@
 package com.insia.org.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,6 +51,7 @@ public class LoginServlet extends HttpServlet {
 
 		String login = "";
 		String passwd = "";
+		ArrayList<MyBeans> cart = new ArrayList<MyBeans>();
 
 		// 2. Cr�ation Session Http � partir de l'objet Request
 		HttpSession session = request.getSession();
@@ -63,6 +65,7 @@ public class LoginServlet extends HttpServlet {
 
 			//3. Mise en attribut de session des param requetes
 			session.setAttribute("login", login);
+			session.setAttribute("cart", cart);
 
 
 			//4. Je suis logg�

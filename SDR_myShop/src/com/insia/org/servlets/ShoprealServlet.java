@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -81,12 +82,10 @@ public class ShoprealServlet extends HttpServlet {
 				
 
 				
-				//Create the cart
-				database.createTable("Cart");
-				
 			}
 				
-			List<MyBeans> cart = (List<MyBeans>) database.get("Cart");
+			// Retrieve cart information
+			ArrayList<MyBeans> cart = (ArrayList<MyBeans>) session.getAttribute("cart");
 			
 			//Si il y a deux users, ne pas stocker Cart dans la base
 			
@@ -101,6 +100,9 @@ public class ShoprealServlet extends HttpServlet {
 			Iterator<MyBeans> e = cart.iterator();
 			while (e.hasNext()) {
 				System.out.println(e.next());
+				if (e != null) {
+					
+				}
 			}
 			
 			
