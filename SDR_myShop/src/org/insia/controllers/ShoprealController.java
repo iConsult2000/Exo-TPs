@@ -1,4 +1,4 @@
-package com.insia.org.servlets;
+package org.insia.controllers;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -20,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.connector.Request;
+import org.insia.models.MyBeans;
+import org.insia.utils.FakeDataHolder;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageDecoder;
@@ -29,13 +32,13 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
  * Servlet implementation class shopreal
  */
 @WebServlet("/shopreal/*")
-public class ShoprealServlet extends HttpServlet {
+public class ShoprealController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ShoprealServlet() {
+	public ShoprealController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -48,67 +51,42 @@ public class ShoprealServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
+		FakeDataHolder database = FakeDataHolder.getInstance();
 		
 		if (session.getAttribute("login") != null) {
 			System.out.println("Do the treatment");
 			
-			FakeDataHolder database = FakeDataHolder.getInstance();
+			//Publish stored products
+			List<MyBeans> storedProducts = (List<MyBeans>) database.get("Products");
 			
-			if (database.createTable("Products") != null) {
-				//Completer la base de données Products
-				List<MyBeans> StoreProducts = (List<MyBeans>) database.get("Products");
-			
-				
-				MyBeans id001 = new MyBeans("id001", 250, "iPhone 4S");
-				System.out.println(id001.getDescription());
-				MyBeans id002 = new MyBeans("id002", 745, "Black Berry Curve");
-				MyBeans id003 = new MyBeans("id003", 15, "Galaxy note");
-				MyBeans id004 = new MyBeans("id004", 5, "nokia 800");
-				MyBeans id005 = new MyBeans("id005", 75, "wave3 desire");
-				
-				//Add in datrabase
-				StoreProducts.add(id001);
-				StoreProducts.add(id002);
-				StoreProducts.add(id003);
-				StoreProducts.add(id004);
-				StoreProducts.add(id005);
-//				
-				//Publish them in session
-				session.setAttribute("id001", id001);
-				session.setAttribute("id002", id002);
-				session.setAttribute("id003", id003);
-				session.setAttribute("id004", id004);
-				session.setAttribute("id005", id005);
-				
-
-				
+			// Retrieve information
+			System.out.println("Synchronizing myaccueil.jsp :");
+			MyBeans dummy = new MyBeans();
+			ListIterator<MyBeans> e = storedProducts.listIterator();
+			while (e.hasNext()){
+				dummy = e.next();
+				session.setAttribute(dummy.getItem(), dummy);				
 			}
-				
-			// Retrieve cart information
-			ArrayList<MyBeans> cart = (ArrayList<MyBeans>) session.getAttribute("cart");
 			
 			//Si il y a deux users, ne pas stocker Cart dans la base
 			
 			//Retrieve the product using the bean id by Form submit
 			MyBeans resultparamBean = (MyBeans) database.findOne("Products", "item", request.getParameter("item"));
 			//add item to cart
-			cart.add(resultparamBean);
 			
-				
-			
-			System.out.println("What is in cart :");
-			Iterator<MyBeans> e = cart.iterator();
-			while (e.hasNext()) {
-				System.out.println(e.next());
-				if (e != null) {
-					
-				}
-			}
+//			System.out.println("What is in cart :");
+//			Iterator<MyBeans> e = cart.iterator();
+//			while (e.hasNext()) {
+//				System.out.println(e.next());
+//				if (e != null) {
+//					
+//				}
+//			}
 			
 			
 			
 			//Return to shopping
-			request.getRequestDispatcher("/WEB-INF/myaccueil.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/components/myaccueil.jsp").forward(request, response);
 			
 			
 			

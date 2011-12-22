@@ -9,10 +9,6 @@
 </head>
 <body>
 	<!-- Notre site possède un menu qui s'affiche sur toutes les pages du site ( indice : directive include ) -->
-
-
-
-
 	<%
 		Cookie[] mesCookies = request.getCookies(); // Je récupère tous les cookies
 
@@ -30,20 +26,17 @@
 			}
 		}
 	%>
+
 	<!-- Afficher la page de Menu après le test de cookies -->
-	<%@ include file="Menu.jsp"%>
+	<%@ include file="/WEB-INF/components/Menu.jsp"%>
 	<div>
-		<br> <br>
+		<br>
 		<hr>
 		<p>Bienvenue sur ce site génialissime !</p>
 		<p>Pour accéder à la page secrète, vous devez vous connecter !</p>
-
 	</div>
-	<div>
 	
-		<%@ include file="/dummyshop.jsp" %>
+	<%@ include file="/WEB-INF/components/dummyshop.jsp"%>
 	
-		
-	</div>
 </body>
 </html>

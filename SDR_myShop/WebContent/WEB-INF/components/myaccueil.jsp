@@ -16,22 +16,22 @@
 	<%
 		Cookie[] mesCookies = request.getCookies(); // Je récupère tous les cookies
 
-		if (mesCookies != null) {
-			for (int i = 0; i < mesCookies.length; i++) {
-				// S'il existeun Cookie nommé“nomCookie"
-				if (mesCookies[i].getName().equals("logcookie1")) {
-					// J’ai trouvéle cookie que je cherchais, je garde sa valeur:
-					String login = mesCookies[i].getValue();
+			if (mesCookies != null) {
+		for (int i = 0; i < mesCookies.length; i++) {
+			// S'il existeun Cookie nommé“nomCookie"
+			if (mesCookies[i].getName().equals("logcookie1")) {
+				// J’ai trouvéle cookie que je cherchais, je garde sa valeur:
+				String login = mesCookies[i].getValue();
 
-					//3. Mise en attribut de session des param requetes
-					session.setAttribute("login", login);
+				//3. Mise en attribut de session des param requetes
+				session.setAttribute("login", login);
 
-				}
 			}
 		}
+			}
 	%>
 	<!-- Afficher la page de Menu après le test de cookies -->
-	<%@ include file="../Menu.jsp"%>
+	<%@ include file="Menu.jsp"%>
 	<div>
 		<br> <br>
 		<hr>
@@ -41,7 +41,7 @@
 	</div>
 	<div>
 	
-		<%@ include file="/WEB-INF/shopreal.jsp" %>
+		<%@ include file="shopreal.jsp" %>
 		
 	
 		

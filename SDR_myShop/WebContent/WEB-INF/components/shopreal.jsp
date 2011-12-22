@@ -1,5 +1,5 @@
 <%@page import="java.util.*"%>
-<%@page import="com.insia.org.servlets.MyBeans" %>
+<%@page import="org.insia.models.MyBeans" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -38,7 +38,7 @@
 		<ul id="item">
 			<li><center>
 			<%-- initialize bean properties --%>
-				<jsp:useBean id="id001"	type="com.insia.org.servlets.MyBeans" scope="session" />
+				<jsp:useBean id="id001"	type="org.insia.models.MyBeans" scope="session" />
 				<img src="./WEB-PNG/Iphone_4_blanc_medium.png" alt="Iphone_4_blanc" /> <br>  
 				<jsp:getProperty name="id001" property="prix"  /> Euros
 				 			
@@ -55,7 +55,7 @@
 			
 			<li><center>
 			<%-- intialize bean properties --%>
-				<jsp:useBean id="id002"	type="com.insia.org.servlets.MyBeans" scope="session" />
+				<jsp:useBean id="id002"	type="org.insia.models.MyBeans" scope="session" />
 				<img src="./WEB-PNG/Curve-9360-front-medium.png" alt="shopping" /> <br>
 			<jsp:getProperty name="id002" property="prix" /> Euros
 				
@@ -71,7 +71,7 @@
 			
 			<li><center>
 			<%-- intialize bean properties --%>
-				<jsp:useBean id="id003" type="com.insia.org.servlets.MyBeans" scope="session" />
+				<jsp:useBean id="id003" type="org.insia.models.MyBeans" scope="session" />
 				<img src="./PNG/samsung-galaxy-note-medium_front..png" alt="shopping" /> <br>
 			<jsp:getProperty name="id003" property="prix"  /> Euros
 					
@@ -88,7 +88,7 @@
 			
 			<li><center>
 			<%-- intialize bean properties --%>
-			<jsp:useBean id="id004"	type="com.insia.org.servlets.MyBeans" scope="session" />
+			<jsp:useBean id="id004"	type="org.insia.models.MyBeans" scope="session" />
 			<img src="./PNG/nokia800-medium-front.png" alt="shopping" /> <br>
 			<jsp:getProperty name="id004" property="prix"  /> Euros
 							
@@ -106,7 +106,7 @@
 			
 		<li><center>
 		<%-- intialize bean properties --%>
-		<jsp:useBean id="id005"	type="com.insia.org.servlets.MyBeans" scope="session"/>
+		<jsp:useBean id="id005"	type="org.insia.models.MyBeans" scope="session"/>
 			<img src="./PNG/wave 3-medium-front.png" alt="shopping" /> <br>
 			<jsp:getProperty name="id005" property="prix" /> Euros
 		

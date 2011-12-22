@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.insia.org.servlets;
+package org.insia.models;
 
 import java.io.Serializable;
 

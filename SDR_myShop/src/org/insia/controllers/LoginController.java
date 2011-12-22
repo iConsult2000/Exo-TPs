@@ -1,4 +1,4 @@
-package com.insia.org.servlets;
+package org.insia.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,19 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.insia.models.MyBeans;
+
 import com.sun.xml.internal.ws.util.StringUtils;
 
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginServlet() {
+	public LoginController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

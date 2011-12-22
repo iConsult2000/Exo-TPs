@@ -12,7 +12,7 @@ font-size: 1em;
 </style>
 <div id="menu">
 		<ul> <%if (session.getAttribute("login") != null) { %>
-			<li><a href="accueil.jsp">Accueil</a></li>
+			<li><a href="./accueil.jsp">Accueil</a></li>
 			<li> - </li>			
 		
 			<li><a href="logout">Deconnexion</a></li>
@@ -24,10 +24,10 @@ font-size: 1em;
 			<li> Connecté sous <%=session.getAttribute("login").toString() %> </li>
 			
 			<%} else {%>
-			<li><a href="accueil.jsp">Accueil</a></li>
+			<li><a href="./accueil.jsp">Accueil</a></li>
 			<li> - </li>			
 		
-			<li><a href="login.jsp">Connexion</a></li>
+			<li><a href="./login.jsp">Connexion</a></li>
 			<li> - </li>  
 			<%} %>
 			

@@ -20,10 +20,10 @@ width:70px;
 </head>
 <body>
 <!-- Notre site possède un menu qui s'affiche sur toutes les pages du site ( indice : directive include ) -->
-<%@ include file="Menu.jsp" %>
+<%@ include file="/WEB-INF/components/Menu.jsp" %>
 
 <div id="connexion">
-		<br><br>
+		<br>
 		<hr>
 		<p>Connexion</p>
 		<form method="post" action="login">
