@@ -1,61 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<style type="text/css">
-#item li {
-	float: left;
-	list-style-type: none;
-	font-size: 1em;
-	list-style-type: none;
-}
-
-#item input {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#item h3 {
-	margin: auto;
-}
-</style>
-
-<div>
-		<p />
-		<center>
-			<h3>Create your account member</h3>
-		</center>
-
-		<ul id="item">
-			<li><center><img src="./WEB-PNG/Iphone_4_blanc_medium.png"
+		<ul class="item">
+			<li><img src="./resources/PNG/Iphone_4_blanc_medium.png"
 				alt="Iphone_4_blanc" /> <br>  
-				A partir de 250€	
+				A partir de 250 Euros	
 			
-			</center>
+			
 			</li>
 			
-			<li><center><img src="./WEB-PNG/Curve-9360-front-medium.png" alt="shopping" /> <br>
-			A partir de 745€
+			<li><img src="./resources/PNG/Curve-9360-front-medium.png" alt="shopping" /> <br>
+			A partir de 745 Euros
 			
-			</center></li>
-			
-			<li><center><img src="./PNG/samsung-galaxy-note-medium_front..png" alt="shopping" /> <br>
-			A partir de 15€
-			
-				</center>				
 			</li>
 			
-			<li><center><img src="./PNG/nokia800-medium-front.png" alt="shopping" /> <br>
-			A partir de 5€
+			<li><img src="./resources/PNG/samsung-galaxy-note-medium_front..png" alt="shopping" /> <br>
+			A partir de 15 Euros
+			
+								
+			</li>
+			
+			<li><img src="./resources/PNG/nokia800-medium-front.png" alt="shopping" /> <br>
+			A partir de 5 Euros
 				
 			
-			</center></li>
+			</li>
 			
 			
-		<li><center><img src="./PNG/wave 3-medium-front.png" alt="shopping" /> <br>
-		A partir de 75€
+		<li><img src="./resources/PNG/wave 3-medium-front.png" alt="shopping" /> <br>
+		A partir de 75 Euros
 		
-			</center></li>
+			</li>
 
 		</ul>
-</div>

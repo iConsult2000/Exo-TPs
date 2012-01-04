@@ -3,7 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/css/style.css" />
 <title>e-Web-shopping SDR</title>
 
 </head>
@@ -30,21 +31,28 @@
 		}
 			}
 	%>
+	<div class="menu">
 	<!-- Afficher la page de Menu après le test de cookies -->
-	<%@ include file="Menu.jsp"%>
-	<div>
-		<br> <br>
+	<jsp:include page="Menu.jsp"/>
+	</div>
+
+	<div class="container">
+	<br> <br>
 		<hr>
 		<p>Bienvenue sur ce site génialissime !</p>
 		<p>Pour accéder à la page secrète, vous devez vous connecter !</p>
-
+		
+	<!-- Afficher les produits du magasin -->
+	<jsp:include page="shopreal.jsp" />
+	
 	</div>
-	<div>
+
+
+	<div class="footer">
+		<br>
+		<hr>
+		<p> &copy; Travaux Pratiques Ingesup 2011 </p>
 	
-		<%@ include file="shopreal.jsp" %>
-		
-	
-		
 	</div>
 </body>
 </html>
