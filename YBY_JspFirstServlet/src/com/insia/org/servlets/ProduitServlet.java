@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.insia.org.beans.Produit;
+//import com.insia.org.beans.Produit;
 
 /**
  * Servlet implementation class produitServlet
@@ -31,13 +31,13 @@ public class ProduitServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Produit montre = new Produit();
-		montre.setLibelle("Rollex x510");
-		montre.setPrix(469);
+		//Produit montre = new Produit();
+		//montre.setLibelle("Rollex x510");
+		//montre.setPrix(469);
 		
-		request.getSession(true).setAttribute("article", montre);
+		//request.getSession(true).setAttribute("article", montre);
 		
-		request.getRequestDispatcher("/produit.jsp").forward(request, response);
+		//request.getRequestDispatcher("/produit.jsp").forward(request, response);
 		
 	}
 

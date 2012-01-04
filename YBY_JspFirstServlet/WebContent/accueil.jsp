@@ -4,23 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="resources/css/index.css" />
 <title>First Servlet</title>
-<style type="text/css">
-  #menu li {
-  color : red;
-  float: left;
-  font-size:14px;
-  list-style-type:none;
-  margin-left:10px;
- 
- }
-  </style>
 </head>
 <body>
-	<%@ include file="menu.jsp"%>
-	<br>
-	<hr>
-	<div>
+	<div id="content">
+		<%@ include file="menu.jsp"%>
+		<br>
+		<hr>
 		<p>Bienvenue sur site généralissime <br> Pour passez à la page secret vous devez vous connecter</p> 
 	</div>
 </body>

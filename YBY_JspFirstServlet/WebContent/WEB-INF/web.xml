@@ -9,6 +9,11 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet> 
+    <servlet-name>Bootstrap</servlet-name>
+    <servlet-class>com.insia.org.data.Bootstrap</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet> 
   <servlet>
     <servlet-name>MyServlet</servlet-name>
     <servlet-class>com.insia.org.servlets.MyServlet</servlet-class>
@@ -33,12 +38,12 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>ProduitServlet</servlet-name>
-    <servlet-class>com.insia.org.servlets.ProduitServlet</servlet-class>
+    <servlet>
+    <servlet-name>cartController</servlet-name>
+    <servlet-class>com.insia.org.servlets.cartController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ProduitServlet</servlet-name>
-    <url-pattern>/produit</url-pattern>
+    <servlet-name>cartController</servlet-name>
+    <url-pattern>/cart</url-pattern>
   </servlet-mapping>
 </web-app>
