@@ -1,6 +1,7 @@
-package com.insia.org.servlets;
+package org.insia.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,19 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.insia.models.MyBeans;
+
 import com.sun.xml.internal.ws.util.StringUtils;
 
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginServlet() {
+	public LoginController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -50,6 +53,7 @@ public class LoginServlet extends HttpServlet {
 
 		String login = "";
 		String passwd = "";
+		ArrayList<MyBeans> cart = new ArrayList<MyBeans>();
 
 		// 2. Cr�ation Session Http � partir de l'objet Request
 		HttpSession session = request.getSession();
@@ -63,6 +67,7 @@ public class LoginServlet extends HttpServlet {
 
 			//3. Mise en attribut de session des param requetes
 			session.setAttribute("login", login);
+			session.setAttribute("cart", cart);
 
 
 			//4. Je suis logg�

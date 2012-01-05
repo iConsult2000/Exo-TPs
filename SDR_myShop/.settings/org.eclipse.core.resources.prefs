@@ -1,3 +1,6 @@
-#Thu Dec 08 15:46:02 CET 2011
+#Thu Dec 22 18:54:01 CET 2011
 eclipse.preferences.version=1
-encoding//src/com/insia/org/servlets/FakeDataHolder.java=ISO-8859-1
+encoding//WebContent/WEB-INF/components/dummyshop.jsp=UTF-8
+encoding//WebContent/WEB-INF/components/myaccueil.jsp=UTF-8
+encoding//WebContent/accueil.jsp=UTF-8
+encoding//src/org/insia/utils/FakeDataHolder.java=ISO-8859-1

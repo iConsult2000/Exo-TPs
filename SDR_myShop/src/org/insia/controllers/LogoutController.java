@@ -1,4 +1,4 @@
-package com.insia.org.servlets;
+package org.insia.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -15,13 +15,13 @@ import org.apache.catalina.Session;
  * Servlet implementation class LogoutServlet
  */
 @WebServlet("/LogoutServlet")
-public class LogoutServlet extends HttpServlet {
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutServlet() {
+    public LogoutController() {
         super();
   
     }
@@ -34,15 +34,15 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		Cookie[] mesCookies= request.getCookies(); // Je récupère tous les cookies
+		Cookie[] mesCookies= request.getCookies(); // Je rï¿½cupï¿½re tous les cookies
 		System.out.println(mesCookies[0].getName());
 		
 			for (int i=0; i < mesCookies.length; i++)
 			{
-				// S'il existeun Cookie nommé“nomCookie"
+				// S'il existeun Cookie nommï¿½nomCookie"
 				if (mesCookies[i].getName().equals("logcookie1"))
 				{
-					// J’ai trouvéle cookie que je cherchais, j’affiche sa valeur:
+					// Jï¿½ai trouvï¿½le cookie que je cherchais, jï¿½affiche sa valeur:
 					mesCookies[i].setMaxAge(0);
 					response.addCookie(mesCookies[i]);
 					break;
