@@ -51,6 +51,8 @@
 				</table>
 				<br>
 				total : <%=total %>
+				<br>
+				<a href="#">commander</a>
 		<% }else{ %>
 				panier vide
 		<% } %>

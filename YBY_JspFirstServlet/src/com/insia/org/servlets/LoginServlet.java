@@ -41,31 +41,31 @@ public class LoginServlet extends HttpServlet {
 		String login = request.getParameter("login");
 		String pass = request.getParameter("pass");
 		
-		Cookie[] mesCookies= request.getCookies(); // Je récupère tous les cookies
+		Cookie[] mesCookies= request.getCookies(); // Je rï¿½cupï¿½re tous les cookies
 			if (mesCookies!=null)
 			{
 				for (int i=0; i<mesCookies.length; i++)
 				{
-					// S'ilexisteun Cookie nommé“nomCookie"
+					// S'ilexisteun Cookie nommï¿½nomCookie"
 					if (mesCookies[i].getName().equals("nomCookie"))
 					{
-						// J’aitrouvéle cookie queje cherchais, j’affichesavaleur:
+						// Jï¿½aitrouvï¿½le cookie queje cherchais, jï¿½affichesavaleur:
 						System.out.println(mesCookies[i].getValue());
 					}
 				}
 			}
 		
-		//Vérifie si le login à été saisi
-		if  ( (login.equals("") )&& (pass.equals("")) ){//Vérif si vide
+		//Vï¿½rifie si le login ï¿½ ï¿½tï¿½ saisi
+		if  ( (login.equals("") )&& (pass.equals("")) ){//Vï¿½rif si vide
 				response.getWriter().write("Le login est obligatoire et le mot de passe est obligatoire");
 				//response.sendError(401, "Le login est obligatoire et le mot de passe est obligatoire");
 			    return;
 		}else{
-			if(login.equals("boston") && pass.equals("boston")){//Vérif si correct
+			if(login.equals("boston") && pass.equals("boston")){//Vï¿½rif si correct
 				//response.getWriter().write("Bienvenue Boston");
 				response.setContentType("text/html");
 				
-				//Création de session
+				//Crï¿½ation de session
 				HttpSession session = request.getSession();
 				session.setAttribute("nom",login);
 				session.setAttribute("pass",pass);
@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 				
 				
 			}else{
-				response.getWriter().write("Vérifier vos mot de passe");
+				response.getWriter().write("Vï¿½rifier vos mot de passe");
 			}
 		} 
 	}
