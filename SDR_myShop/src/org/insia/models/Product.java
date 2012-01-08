@@ -10,20 +10,22 @@ import java.io.Serializable;
  * @author sdacalor
  *
  */
-public class MyBeans implements Serializable {
+public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String item;
 	private Integer prix;
 	private String description;
+	private String path_to_icon;
 	
 	
-	public MyBeans () {}
+	public Product () {}
 	
-	public MyBeans(String item, Integer prix, String description){
+	public Product(String item, Integer prix, String description, String path_to_icon){
 		this.item = item;
 		this.prix = prix;
 		this.description = description;
+		this.path_to_icon = path_to_icon;
 	}
 	
 	
@@ -63,6 +65,13 @@ public class MyBeans implements Serializable {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * @return the icon
+	 */
+	public String getIcon() {
+		return path_to_icon;
 	}
 
 	

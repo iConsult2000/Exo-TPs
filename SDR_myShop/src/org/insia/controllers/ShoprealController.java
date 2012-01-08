@@ -21,7 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.connector.Request;
-import org.insia.models.MyBeans;
+import org.insia.beans.ProductContent;
+import org.insia.models.Product;
 import org.insia.utils.FakeDataHolder;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
@@ -57,21 +58,21 @@ public class ShoprealController extends HttpServlet {
 			System.out.println("Do the treatment");
 			
 			//Publish stored products
-			List<MyBeans> storedProducts = (List<MyBeans>) database.get("Products");
+			ProductContent storedProducts = new ProductContent();
 			
 			// Retrieve information
-			System.out.println("Synchronizing myaccueil.jsp :");
-			MyBeans dummy = new MyBeans();
-			ListIterator<MyBeans> e = storedProducts.listIterator();
-			while (e.hasNext()){
-				dummy = e.next();
-				session.setAttribute(dummy.getItem(), dummy);				
-			}
+//			System.out.println("Synchronizing myaccueil.jsp :");
+//			Product dummy = new Product();
+//			ListIterator<Product> e = storedProducts.;
+//			while (e.hasNext()){
+//				dummy = e.next();
+//				session.setAttribute(dummy.getItem(), dummy);				
+//			}
 			
 			//Si il y a deux users, ne pas stocker Cart dans la base
 			
 			//Retrieve the product using the bean id by Form submit
-			MyBeans resultparamBean = (MyBeans) database.findOne("Products", "item", request.getParameter("item"));
+			Product resultparamBean = (Product) database.findOne("Products", "item", request.getParameter("item"));
 			//add item to cart
 			
 //			System.out.println("What is in cart :");

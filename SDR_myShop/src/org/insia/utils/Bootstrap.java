@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 
-import org.insia.models.MyBeans;
+import org.insia.models.Product;
 
 /**
  * @author sdacalor
@@ -28,14 +28,14 @@ public class Bootstrap extends HttpServlet {
 		
 		//Completer la base de données Products
 		@SuppressWarnings("unchecked")
-		List<MyBeans> storeProducts = (List<MyBeans>) database.createTable("Products");
+		List<Product> storeProducts = (List<Product>) database.createTable("Products");
 	
 		
-		MyBeans id001 = new MyBeans("id001", 250, "iPhone 4S");
-		MyBeans id002 = new MyBeans("id002", 745, "Black Berry Curve");
-		MyBeans id003 = new MyBeans("id003", 15, "Galaxy note");
-		MyBeans id004 = new MyBeans("id004", 5, "nokia 800");
-		MyBeans id005 = new MyBeans("id005", 75, "wave3 desire");
+		Product id001 = new Product("id001", 250, "iPhone 4S", "Iphone_4_blanc_medium.png");
+		Product id002 = new Product("id002", 745, "Black Berry Curve", "Curve-9360-front-medium.png");
+		Product id003 = new Product("id003", 15, "Galaxy note", "samsung-galaxy-note-medium_front.png");
+		Product id004 = new Product("id004", 5, "nokia 800", "nokia800-medium-front.png");
+		Product id005 = new Product("id005", 75, "wave3 desire", "wave_3-medium-front.png");
 		
 		//Add in database
 
@@ -47,7 +47,7 @@ public class Bootstrap extends HttpServlet {
 		
 		//Verify information
 		System.out.println("What is stored :");
-		Iterator<MyBeans> e = storeProducts.iterator();
+		Iterator<Product> e = storeProducts.iterator();
 		while (e.hasNext()) {
 			System.out.println(e.next());
 		}

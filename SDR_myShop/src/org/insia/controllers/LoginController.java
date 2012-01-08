@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.insia.models.MyBeans;
+import org.insia.models.Product;
 
 import com.sun.xml.internal.ws.util.StringUtils;
 
@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
 
 		String login = "";
 		String passwd = "";
-		ArrayList<MyBeans> cart = new ArrayList<MyBeans>();
+		ArrayList<Product> cart = new ArrayList<Product>();
 
 		// 2. Cr�ation Session Http � partir de l'objet Request
 		HttpSession session = request.getSession();
