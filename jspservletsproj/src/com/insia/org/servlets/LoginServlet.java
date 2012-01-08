@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//1. récupération des paramètre de requète
+		//1. rï¿½cupï¿½ration des paramï¿½tre de requï¿½te
 		String login = request.getParameter("login");
 		String pwd = request.getParameter("pwd");
 		
@@ -53,13 +53,13 @@ public class LoginServlet extends HttpServlet {
         	response.getWriter().println("Error login");
         }else if((pwd.equals("password"))){
         	
-        //2. Création session Http à partir de l'Object Request
+        //2. Crï¿½ation session Http ï¿½ partir de l'Object Request
         	HttpSession session = request.getSession();
         	
-        //3. Mise en attribut de session des paramètres de requète
+        //3. Mise en attribut de session des paramï¿½tres de requï¿½te
         	session.setAttribute("login",login);
         	
-	        //3.1. Création du cookie
+	        //3.1. Crï¿½ation du cookie
 	    	Cookie my_cookie = new Cookie("cookie_login", login);
 	    	my_cookie.setMaxAge(30);
 	    	

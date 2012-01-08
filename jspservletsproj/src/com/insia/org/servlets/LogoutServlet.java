@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LogoutServlet
  */
-@WebServlet("/LogoutServlet")
+
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +30,8 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		session.invalidate();
+		session.removeAttribute("login");
+		//session.invalidate();
 		
 		//suppression du cookie
 		Cookie[] my_cookies = request.getCookies();
@@ -44,8 +45,7 @@ public class LogoutServlet extends HttpServlet {
 					System.out.println(my_cookies[i].getValue());
 					my_cookies[i].setMaxAge(0);
 					response.addCookie(my_cookies[i]);
-					
-					response.sendRedirect("accueil.jsp");
+
 				}
 			}
 		}

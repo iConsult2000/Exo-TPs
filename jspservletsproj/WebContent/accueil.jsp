@@ -51,9 +51,6 @@ table
 	</tr>
 	<tr>
 		<td>
-			<% if(request.getAttribute("produit_1") != null){ %>
-        	<%@ include file="produit.jsp" %>
-			<%}%>
 		</td>
 	</tr>
 </table>

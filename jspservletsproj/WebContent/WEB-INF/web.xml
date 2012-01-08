@@ -9,16 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.insia.org.servlets.LoginServlet</servlet-class>
   </servlet>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/connexion</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.insia.org.servlets.LogoutServlet</servlet-class>
@@ -27,14 +25,9 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
-    <servlet-name>ProduitServlet</servlet-name>
-    <servlet-class>com.insia.org.servlets.ProduitServlet</servlet-class>
+  <servlet>
+    <servlet-name>BootStrap</servlet-name>
+    <servlet-class>com.insia.utils.BootStrap</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
-    <servlet-mapping>
-    <servlet-name>ProduitServlet</servlet-name>
-    <url-pattern>/produit</url-pattern>
-  </servlet-mapping>
-  
 </web-app>
