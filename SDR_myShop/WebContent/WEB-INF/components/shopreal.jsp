@@ -1,6 +1,7 @@
 <%@page import="java.util.*"%>
 <%@page import="org.insia.models.Product"%>
-<jsp:useBean id="storedProducts" class="org.insia.beans.ProductContent"/>
+<jsp:useBean id="storedProducts" class="org.insia.beans.ProductContent" scope="session"/>
+<jsp:useBean id="cart" class="org.insia.beans.CartContent" scope="session"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,8 +22,8 @@
 				<%=product.getDescription() %>
 			</h3>
 			<form action="shopreal" method="get">
-				<input type="hidden" name="item" value="id001"> <input
-					id="userForm:btnOk" name="item" type="submit" value="add to cart"
+				<input type="hidden" name="item" value="<%=product.getItem() %>"> <input
+					id="userForm:btnOk" name="btnOK" type="submit" value="add to cart"
 					onclick="if (!confirm('This item will be added in cart')) return false;
 										clear_userForm();" />
 			</form>
@@ -45,11 +46,16 @@
 			<td>the price</td>
 
 		</tr>
+		
+		<% if (cart.getSize() > 0) { 
+			System.out.println("Shop cart size is " + cart.getSize());
+			 for (Product item : cart.getProducts()) { %>
 		<tr>
-			<td>My-selected_item</td>
-			<td>the price</td>
+			<td><%=item.getDescription() %></td>
+			<td><%=item.getPrix() %></td>
 
 		</tr>
+		<% }} %>
 	</table>
 	
 </div>

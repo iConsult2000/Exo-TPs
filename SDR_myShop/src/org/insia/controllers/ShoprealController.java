@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.connector.Request;
+import org.insia.beans.CartContent;
 import org.insia.beans.ProductContent;
 import org.insia.models.Product;
 import org.insia.utils.FakeDataHolder;
@@ -53,12 +54,15 @@ public class ShoprealController extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		FakeDataHolder database = FakeDataHolder.getInstance();
+		 
 		
 		if (session.getAttribute("login") != null) {
 			System.out.println("Do the treatment");
 			
 			//Publish stored products
 			ProductContent storedProducts = new ProductContent();
+			
+			CartContent cart = (CartContent) session.getAttribute("cart");
 			
 			// Retrieve information
 //			System.out.println("Synchronizing myaccueil.jsp :");
@@ -73,8 +77,17 @@ public class ShoprealController extends HttpServlet {
 			
 			//Retrieve the product using the bean id by Form submit
 			Product resultparamBean = (Product) database.findOne("Products", "item", request.getParameter("item"));
-			//add item to cart
 			
+			
+			
+			//add item to cart
+			if (resultparamBean != null) {
+				//TEST
+				System.out.println("Le resultparamBean est " + resultparamBean.getItem());
+				
+				cart.addProducts(resultparamBean);
+				
+			}
 //			System.out.println("What is in cart :");
 //			Iterator<MyBeans> e = cart.iterator();
 //			while (e.hasNext()) {

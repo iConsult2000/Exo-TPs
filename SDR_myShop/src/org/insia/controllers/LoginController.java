@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.insia.beans.CartContent;
 import org.insia.models.Product;
 
 import com.sun.xml.internal.ws.util.StringUtils;
@@ -62,12 +63,12 @@ public class LoginController extends HttpServlet {
 			// 1. R�cup�ration param�tre de requete
 			login = request.getParameter("myname");
 			passwd = request.getParameter("mypwd");
-
-
-
+			
+			
 			//3. Mise en attribut de session des param requetes
 			session.setAttribute("login", login);
 			session.setAttribute("cart", cart);
+			session.setAttribute("cart", new CartContent());
 
 
 			//4. Je suis logg�
