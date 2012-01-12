@@ -30,7 +30,7 @@
 				
 			<% i++; 
 			} %>
-			</p>	
+			</p>	type filter text
 		</div>	
 		<div id="panier">
 			<h3>Panier</h3>	
