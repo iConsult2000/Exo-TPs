@@ -17,3 +17,4 @@ public class articleContent {
 		return (Article) database.findOne("article", "ref", name);
 	}
 }
+
