@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<jsp:useBean id="appContent" class="com.insia.beans.articleContent" scope="session"/>
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -32,35 +33,26 @@
 
 </head>
 <body>
+<%@ page import="com.insia.models.Articles" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ include file="../menu.jsp" %>
 <table id="menu_produit">
 
 	<tr>
 		<td>
 			<div id="menu">
 				<ul>
+					<%for (Articles app : appContent.getArticles()) { %>
 					<li>
-						<table id="menu_prod">
-						
-							<jsp:useBean id="id0001" type="com.insia.beans.MyBeans" scope="session"/>
-								<tr><td><img src="./WEB-IMG/ipad.png" alt="Ipad"/></td></tr>
-								<tr><td><jsp:getProperty property="nomProduit" name="id0001"/></td></tr>
-								<tr><td><jsp:getProperty property="prix" name="id0001"/></td></tr>
-								<form action="produit" method="get">
-									<tr><td><input type="hidden" name="item" value="id0001"></td></tr>
-									<tr><td><input type="submit" value="Ajouter au panier"></td></tr>
-								</form>
-							
-							<jsp:useBean id="id0002" type="com.insia.beans.MyBeans" scope="session"/>
-								<tr><td><img src="./WEB-IMG/samsung-galaxy-note.jpg" alt="Samsung Note"/></td></tr>
-								<tr><td><jsp:getProperty property="nomProduit" name="id0002"/></td></tr>
-								<tr><td><jsp:getProperty property="prix" name="id0002"/></td></tr>
-								<form action="produit" method="get">
-									<tr><td><input type="hidden" name="item" value="id0002"></td></tr>
-									<tr><td><input type="submit" value="Ajouter au panier"></td></tr>
-								</form>
-						
-						</table>
+						<img alt="<%=app.getIcon()%>" src="./WEB-IMG/<%=app.getIcon() %>"  />
+						<br>
+						<a href="app?action=details&name=<%=app.getNom() %>"><%=app.getNom() %></a>
+						<br>
+						Prix : <strong><%=app.getPrice() > 0 ? app.getPrice() : "Gratuit" %>&euro;</strong><br>
+						<a href="cart?action=addToCart&name=<%=app.getNom() %>" class="btn">Ajouter au panier</a>
+						<br>
 					</li>
+					<% 	} %>
 				</ul>
 			</div>
 		</td>

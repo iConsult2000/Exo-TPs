@@ -51,10 +51,7 @@ table
 	</tr>
 	<tr>
 		<td>
-			<% if(session.getAttribute("id0001") != null){ %>
-			<% System.out.println("J'affiche mes produits");%>
-        	<%@ include file="produit.jsp" %>
-			<%}%>
+        	<%@ include file="/WEB-INF/produit.jsp" %>
 		</td>
 	</tr>
 </table>

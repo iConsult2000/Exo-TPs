@@ -1,6 +1,7 @@
 package com.insia.org.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Cookie;
 
 import org.apache.catalina.Session;
+
+import com.insia.models.Articles;
 
 /**
  * Servlet implementation class LoginServlet
@@ -40,6 +43,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		ArrayList<Articles> panier = new ArrayList<Articles>();
 		
 		//1. r�cup�ration des param�tre de requ�te
 		String login = request.getParameter("login");

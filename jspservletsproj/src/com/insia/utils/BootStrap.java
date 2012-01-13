@@ -3,7 +3,7 @@ package com.insia.utils;
 import javax.servlet.http.HttpServlet;
 
 import com.insia.beans.MyBeans;
-import com.insia.org.servlets.FakeDataHolder;
+import com.insia.models.Articles;
 
 import java.util.List;
 
@@ -29,13 +29,10 @@ public class BootStrap extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	public void createDummyApps(){
 			FakeDataHolder db = FakeDataHolder.getInstance();
-			List<MyBeans> liste_produit = (List<MyBeans>) db.get("produit");
-				
-				MyBeans id0001 = new MyBeans("Ipad",250);
-				MyBeans id0002 = new MyBeans("Samsung Note",250);
-				
-				liste_produit.add(id0001);
-				liste_produit.add(id0002);
+			List<Articles> liste_produit = (List<Articles>) db.createTable("produit");
+			
+				liste_produit.add(new Articles("Ipad",250,"Ipad.png"));
+				liste_produit.add(new Articles("Samsung Note",250,"samsung-galaxy-note.jpg"));
 				
 			}
 			

@@ -26,6 +26,14 @@
     <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>ProduitController</servlet-name>
+    <servlet-class>com.insia.org.servlets.ProduitController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProduitController</servlet-name>
+    <url-pattern>/produit</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>BootStrap</servlet-name>
     <servlet-class>com.insia.utils.BootStrap</servlet-class>
     <load-on-startup>1</load-on-startup>
