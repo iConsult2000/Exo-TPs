@@ -13,10 +13,14 @@
 <div class="drag" style="background-color: #000; width:100px; height: 100px; "></div>
 <div id="monDiv">Bla</div>
 <img src="./WEB-IMG/un_effet_Fractalus_sur_une_image15.jpg" />
+<form id="toServer"></form>
 
 <script type="text/javascript">
-	setInterval($.post("server", {arg_top:ui.position.top, arg_left:ui.position.left},
-			function(data){System.out.println("La fonction data !!")} ), 100);
+	
+	$.post("server", {arg_top:ui.position.top, arg_left:ui.position.left},function(data){document.write("La fonction data !!")} )
+	
+	setInterval(, 100);
+	
 </script>
 
 <script type="text/javascript">
