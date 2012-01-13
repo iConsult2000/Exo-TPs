@@ -30,13 +30,6 @@ public class serverControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		ArrayList<String> position = new ArrayList();
 		
 		//On récupère les valeurs de la position img
@@ -46,11 +39,20 @@ public class serverControl extends HttpServlet {
 		position.add(0, Arg_Top);
 		position.add(0, Arg_Left);
 		
+		
+		
 		for(int i=0;i<position.size();i++){
 			System.out.println(position);
 		}
 		
 		request.getRequestDispatcher("./index.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 	}
 
 }

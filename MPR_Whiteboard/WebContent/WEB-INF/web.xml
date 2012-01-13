@@ -12,7 +12,7 @@
   
   <servlet>
     <servlet-name>server</servlet-name>
-    <servlet-class>control.servlet.servletControl</servlet-class>
+    <servlet-class>control.servlet.serverControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>server</servlet-name>
