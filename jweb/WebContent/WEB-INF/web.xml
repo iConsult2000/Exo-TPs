@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>jweb</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>boucle</servlet-name>
+    <servlet-class>controller.my.servlet.Boucle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>boucle</servlet-name>
+    <url-pattern>/boucle</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>formulaire</servlet-name>
+    <servlet-class>controller.my.servlet.Formulaire</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>formulaire</servlet-name>
+    <url-pattern>/formulaire</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>session</servlet-name>
+    <servlet-class>controller.my.servlet.Session</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>session</servlet-name>
+    <url-pattern>/session</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>context</servlet-name>
+    <servlet-class>controller.my.servlet.Context</servlet-class>
+    <init-param>
+    	<param-name>myPhone</param-name>
+    	<param-value>Iphone 3</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>context</servlet-name>
+    <url-pattern>/context</url-pattern>
+  </servlet-mapping>
+  <context-param>
+  	<param-name>myName</param-name>
+  	<param-value>Manuel PHEJAR</param-value>
+  </context-param>
+</web-app>
