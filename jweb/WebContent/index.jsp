@@ -100,7 +100,6 @@
 			</td>
 		</tr>
 	</table>
-	<a href="http://www.google.com/calendar/event?action=TEMPLATE&text=testputevent&dates=20120226/20120228&details=it's%20a%20little%20test&location=at%20home&trp=false&sprop=&sprop=name:" target="_blank"><img src="//www.google.com/calendar/images/ext/gc_button6.gif" alt="0" border="0"></a>
 	<iframe src="https://www.google.com/calendar/embed?title=Calendar&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=phejar.manuel%40gmail.com&amp;color=%232952A3&amp;ctz=Europe%2FParis" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 </body>
