@@ -4,17 +4,19 @@ public class Personne {
 	
 	private String nom ;
 	private String prenom ;
+	private Adresse adresse;
 	
 	public Personne() {
 		super();
 	}
-
-	public Personne(String nom, String prenom) {
+	
+	public Personne(String nom, String prenom, Adresse adresse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
+		this.adresse = adresse;
 	}
-	
+
 	public String getNom() {
 		return nom;
 	}
@@ -27,8 +29,15 @@ public class Personne {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
 
 	public String toString() {
-		return "Personne [nom=" + nom + ", prenom=" + prenom + "]";
-	}	
+		return "Personne [nom=" + nom + ", prenom=" + prenom + ", adresse="
+				+ adresse + "]";
+	}		
 }
