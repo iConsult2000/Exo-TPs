@@ -54,6 +54,7 @@ public class LoginController extends HttpServlet {
 
 		String login = "";
 		String passwd = "";
+		Integer number = 0;
 		
 
 		// 2. Cr�ation Session Http � partir de l'objet Request
@@ -72,6 +73,7 @@ public class LoginController extends HttpServlet {
 			//3. Mise en attribut de session des param requetes
 			session.setAttribute("login", login);
 			session.setAttribute("cart", cart);
+			session.setAttribute("number", number);
 
 
 			//4. Je suis logg�
@@ -88,7 +90,8 @@ public class LoginController extends HttpServlet {
 			// 4. Redirection vers JSP
 			// 3. Initialisation du dispatcher
 			
-			response.sendRedirect("shopreal");
+			//response.sendRedirect("shopreal");
+			response.sendRedirect("oauth2callback");
 
 		}
 	

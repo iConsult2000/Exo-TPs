@@ -41,7 +41,7 @@
 	<p>Panel of the shop-cart</p>
 	
 	
-	<table border=1px color=red cellpadding=0 cellspacing=0>
+	<table border=0px color=red cellpadding=0 cellspacing=0>
 		<tr>
 			<td>My-selected_item</td>
 			<td>the price</td>
