@@ -33,23 +33,23 @@ public class ListeArticlesServlets extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(true);
-		
-		Collection<Article> articles 	= book_shop_facade_bean_local.getAllArticles();
-		String listeLibelles			= " ";
-		String listePrix			= " ";
-		for(Article art : articles){
-			listeLibelles	+=art.getLibelle().concat(" ");
-			listePrix		+=Float.toString(art.getPrix()).concat(" ");
-		}
-		session.setAttribute("listeLibelles",listeLibelles);
-		session.setAttribute("listePrix",listePrix);
-		
-		//redirection
-		request.getRequestDispatcher("/").forward(request, response);
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	// TODO Auto-generated method stub
+    	HttpSession session = request.getSession(true);
+
+    	Collection<Article> articles = bookShopFacadeBeanRemote.getAllArticles();
+    	String listeLibelles = " ";
+    	String listePrix = " ";
+    	for(Article art : articles){
+    	listeLibelles +=art.getLibelle().concat(" ");
+    	listePrix +=Float.toString(art.getPrix()).concat(" ");
+    	}
+    	session.setAttribute("listeLibelles",listeLibelles);
+    	session.setAttribute("listePrix",listePrix);
+
+    	//redirection
+    	request.getRequestDispatcher("/").forward(request, response);
+    	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

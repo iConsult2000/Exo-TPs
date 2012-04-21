@@ -11,9 +11,17 @@
 <br/>
 <% if(session.getAttribute("listeLibelles") != null || session.getAttribute("listePrix") != null){ %>
 <p>Liste des articles :</p>
-<%= session.getAttribute("listeLibelles").toString()%>
-<br/>
-<%= session.getAttribute("listePrix").toString()%>
+<table>
+	<th>Libelle</th>
+	<th>Prix</th>
+	<% //for (int i=0;i<session.getAttribute("nbArticle");i++){ %>
+	<tr>
+		<td><%= session.getAttribute("nbArticles").toString()%></td>
+		<td><%= session.getAttribute("listePrix").toString()%></td>
+	</tr>
+	<% //} %>
+</table>
+ 
 <% } %>
 
 <form action="./ajouter" method="post">
@@ -21,8 +29,8 @@
 		<th>Libelle</th>
 		<th>Prix</th>
 		<tr>
-			<td><input type="text" name="libelle"/>
-			<td><input type="text" name="prix"/>
+			<td><input type="text" name="libelle"/></td>
+			<td><input type="text" name="prix"/></td>
 		</tr>
 		<tr><td colspan="2"><input type="submit" value="valider"/></td></tr>
 	</table>
