@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="./bookshop">bookshop</a>
+<a href="./lister">liste</a>
 <br/>
 <% if(session.getAttribute("listeLibelles") != null || session.getAttribute("listePrix") != null){ %>
 <p>Liste des articles :</p>
@@ -15,5 +15,17 @@
 <br/>
 <%= session.getAttribute("listePrix").toString()%>
 <% } %>
+
+<form action="./ajouter" method="post">
+	<table>
+		<th>Libelle</th>
+		<th>Prix</th>
+		<tr>
+			<td><input type="text" name="libelle"/>
+			<td><input type="text" name="prix"/>
+		</tr>
+		<tr><td colspan="2"><input type="submit" value="valider"/></td></tr>
+	</table>
+</form>
 </body>
 </html>

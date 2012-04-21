@@ -14,10 +14,10 @@ public class BookShopBouchon {
 		/*
 		 * Creation d'articles
 		 */
-		Article art1 = new Article(01,"Watch FESTINA",120.0f);
-		Article art2 = new Article(02,"New Ipad 3",500.0f);
-		Article art3 = new Article(03,"SAMSUNG Galaxy SII",499.0f);
-		Article art4 = new Article(04,"Western Digital",90.0f);
+		Article art1 = new Article("Watch FESTINA",120.0f);
+		Article art2 = new Article("New Ipad 3",500.0f);
+		Article art3 = new Article("SAMSUNG Galaxy SII",499.0f);
+		Article art4 = new Article("Western Digital",90.0f);
 		
 		/*
 		 * Creation de la collection
