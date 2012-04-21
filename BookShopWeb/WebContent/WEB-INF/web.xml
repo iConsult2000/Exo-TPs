@@ -10,8 +10,11 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
+  	<description></description>
+    <display-name>listerServlet</display-name>
     <servlet-name>listerServlet</servlet-name>
     <servlet-class>com.ingesup.bookshop.servlet.ListeArticlesServlets</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>listerServlet</servlet-name>

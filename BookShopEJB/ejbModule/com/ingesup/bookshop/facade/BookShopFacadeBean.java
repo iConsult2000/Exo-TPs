@@ -2,11 +2,13 @@ package com.ingesup.bookshop.facade;
 
 import java.util.Collection;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.ingesup.bookshop.persistance.Article;
+import com.ingesup.bookshop.stateful.ShoppingCartRemote;
 import com.ingesup.bookshop.utils.BookShopBouchon;
 
 /**
@@ -29,7 +31,7 @@ public class BookShopFacadeBean implements BookShopFacadeBeanRemote, BookShopFac
     
     public Collection<Article> getAllArticles(){
     	System.out.println("lister tous les articles in progress...");
-		javax.persistence.Query q = em.createQuery("select a from Article a");
+		javax.persistence.Query q = em.createQuery("select a from Article a");		
 		return q.getResultList();
     }
     

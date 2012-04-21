@@ -7,24 +7,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="./lister">liste</a>
+
+
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.ingesup.bookshop.persistance.Article" %>
+
 <br/>
-<% if(session.getAttribute("listeLibelles") != null || session.getAttribute("listePrix") != null){ %>
 <p>Liste des articles :</p>
 <table>
-	<th>Libelle</th>
+	<th>Numéro</th>
+	<th>Libèlle</th>
 	<th>Prix</th>
-	<% //for (int i=0;i<session.getAttribute("nbArticle");i++){ %>
-	<tr>
-		<td><%= session.getAttribute("nbArticles").toString()%></td>
-		<td><%= session.getAttribute("listePrix").toString()%></td>
-	</tr>
-	<% //} %>
+		<% 
+		if(session.getAttribute("Articles") != null){
+		ArrayList<Article> Articles = (ArrayList<Article>) session.getAttribute("Articles");
+		for(Article a : Articles) { %>
+		<tr>
+			<td><%=a.getNumeroArticle()%></td><td><%=a.getLibelle()%></td><td><%=a.getPrix()%></td><td><a href="#">Add to cart</a></td>
+		</tr>
+		<% }} %>
 </table>
- 
-<% } %>
 
-<form action="./ajouter" method="post">
+
+<!-- <form action="./ajouter" method="post">
 	<table>
 		<th>Libelle</th>
 		<th>Prix</th>
@@ -34,6 +39,6 @@
 		</tr>
 		<tr><td colspan="2"><input type="submit" value="valider"/></td></tr>
 	</table>
-</form>
+</form> -->
 </body>
 </html>
