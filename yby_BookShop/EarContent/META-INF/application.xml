@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:application="http://java.sun.com/xml/ns/javaee/application_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd" id="Application_ID" version="5">
+  <display-name>yby_BookShop</display-name>
+  <module>
+    <web>
+      <web-uri>yby_BookShopWeb.war</web-uri>
+      <context-root>yby_BookShopWeb</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>yby_BookShopEJB.jar</ejb>
+  </module>
+  <module>
+    <java>yby_BookShopClient.jar</java>
+  </module>
+</application>
