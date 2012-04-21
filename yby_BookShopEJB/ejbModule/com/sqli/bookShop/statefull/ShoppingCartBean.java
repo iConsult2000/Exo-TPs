@@ -23,8 +23,8 @@ public class ShoppingCartBean{
 
 	private Commande commande=null;
 
-	@PersistenceContext(unitName="bookShopUnit")
-	protected EntityManager em;
+	//@PersistenceContext(unitName="bookShopUnit")
+	//protected EntityManager em;
 	
     /**
      * Default constructor. 
@@ -45,7 +45,7 @@ public class ShoppingCartBean{
 	}
 
 	public void addLigneCommande(int numeroArticle) {
-		if (commande.getLignesDeCommande() == null){
+		/*if (commande.getLignesDeCommande() == null){
 			commande.setLignesDeCommande(new ArrayList<LigneDeCommande>());
 		}
 		LigneDeCommande ligne = new LigneDeCommande();
@@ -53,7 +53,7 @@ public class ShoppingCartBean{
 		a.setNumeroArticle(numeroArticle);
 		ligne.setArticle(a);
 		em.persist(ligne);
-		commande.getLignesDeCommande().add(ligne);
+		commande.getLignesDeCommande().add(ligne);*/
 		//BookshopBouchon.addLigneCommande(numeroArticle);
 	}
 
@@ -62,7 +62,7 @@ public class ShoppingCartBean{
 	}
 
 	public void validerAchat(Commande commande) {
-		em.persist(commande);
+		//em.persist(commande);
 		//BookshopBouchon.validerAchat(commande);		
 	}
     

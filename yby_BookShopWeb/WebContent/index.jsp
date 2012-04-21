@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>TP BookShop | EJB Application Web </title>
 </head>
 <body>
 	<div align="center">Bienvenue sur mon application EJB
@@ -17,9 +17,9 @@
 		<div id="centre">
 		<h3>Liste des articles</h3>
 		<br>
-		<table cellspcing="0" cellpadding="0" border=0>
+		<table cellspcing="0" cellpadding="0" border="0px" width="700px">
 			<tr>
-				<td>Numéro </td><td>Filière </td><td>Prix </td><td></td>
+				<td>Numéro </td><td>Filière </td><td>Prix €</td><td></td>
 			<tr>
 				<% ArrayList<Article> list = (ArrayList<Article>) session.getAttribute("lesArticles");
 				for(Article art : list) { %>
