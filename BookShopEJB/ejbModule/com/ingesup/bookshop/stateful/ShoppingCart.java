@@ -31,7 +31,7 @@ public class ShoppingCart implements ShoppingCartRemote, ShoppingCartLocal {
 	 * @return the commande
 	 */
 	public Commande getCommande() {
-		System.out.println("Passage adns la méthode getCommande");
+		System.out.println("Passage dans la méthode getCommande");
 		return commande;
 	}
 

@@ -15,7 +15,7 @@ import com.ingesup.bookshop.utils.BookShopBouchon;
 @Stateless
 public class BookShopFacadeBean implements BookShopFacadeBeanRemote, BookShopFacadeBeanLocal {
 
-	
+	@PersistenceContext EntityManager em;
 
 	/**
      * Default constructor. 
@@ -28,9 +28,13 @@ public class BookShopFacadeBean implements BookShopFacadeBeanRemote, BookShopFac
 		return null;}
     
     public Collection<Article> getAllArticles(){
-		return BookShopBouchon.getAllArticles();
+    	System.out.println("lister tous les articles in progress...");
+		javax.persistence.Query q = em.createQuery("select a from Article a");
+		return q.getResultList();
     }
     
-    public void addArticle(Article article){}
+    public void addArticle(Article article){
+    	em.persist(article);    	
+    }
 
 }

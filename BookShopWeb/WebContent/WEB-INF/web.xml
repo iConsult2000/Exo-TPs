@@ -10,11 +10,19 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <servlet-name>bookshop</servlet-name>
+    <servlet-name>listerServlet</servlet-name>
     <servlet-class>com.ingesup.bookshop.servlet.ListeArticlesServlets</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>bookshop</servlet-name>
-    <url-pattern>/bookshop</url-pattern>
+    <servlet-name>listerServlet</servlet-name>
+    <url-pattern>/lister</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ajouterServlet</servlet-name>
+    <servlet-class>com.ingesup.bookshop.servlet.AddArticlesServlets</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ajouterServlet</servlet-name>
+    <url-pattern>/ajouter</url-pattern>
   </servlet-mapping>
 </web-app>

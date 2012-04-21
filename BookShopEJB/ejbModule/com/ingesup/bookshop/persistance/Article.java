@@ -22,8 +22,7 @@ public class Article implements Serializable{
 	
 	public Article(){}
 	
-	public Article(int numeroArticle,String libelle, float prix){
-		this.numeroArticle	=numeroArticle;
+	public Article(String libelle, float prix){
 		this.libelle		=libelle;
 		this.prix			=prix;
 	}
