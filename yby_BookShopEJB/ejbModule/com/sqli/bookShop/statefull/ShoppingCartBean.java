@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.sqli.bookShop.persistance.Article;
+import com.sqli.bookShop.persistance.BookshopBouchon;
 import com.sqli.bookShop.persistance.Commande;
 import com.sqli.bookShop.persistance.LigneDeCommande;
 
@@ -35,25 +36,26 @@ public class ShoppingCartBean{
 
     @PostConstruct
     public void initialize(){
-    	System.out.println("Methode initialise de ShoppingCartBean");
-    	commande = new Commande();
+    	//System.out.println("Methode initialise de ShoppingCartBean");
+    	//commande = new Commande();
     }
 
 	public Commande getCommande() {
-		System.out.println("Passage dans la méthode getCommande()");
-		return commande;
+		//System.out.println("Passage dans la méthode getCommande()");
+		//return commande;
+		return null;
 	}
 
 	public void addLigneCommande(int numeroArticle) {
-		/*if (commande.getLignesDeCommande() == null){
-			commande.setLignesDeCommande(new ArrayList<LigneDeCommande>());
-		}
-		LigneDeCommande ligne = new LigneDeCommande();
-		Article a = new Article();
-		a.setNumeroArticle(numeroArticle);
-		ligne.setArticle(a);
-		em.persist(ligne);
-		commande.getLignesDeCommande().add(ligne);*/
+//		if (commande.getLignesDeCommande() == null){
+//			commande.setLignesDeCommande(new ArrayList<LigneDeCommande>());
+//		}
+//		LigneDeCommande ligne = new LigneDeCommande();
+//		Article a = new Article();
+//		a.setNumeroArticle(numeroArticle);
+//		ligne.setArticle(a);
+//		em.persist(ligne);
+//		commande.getLignesDeCommande().add(ligne);
 		//BookshopBouchon.addLigneCommande(numeroArticle);
 	}
 
@@ -62,8 +64,8 @@ public class ShoppingCartBean{
 	}
 
 	public void validerAchat(Commande commande) {
-		//em.persist(commande);
-		//BookshopBouchon.validerAchat(commande);		
+//		em.persist(commande);
+//		BookshopBouchon.validerAchat(commande);		
 	}
     
 }

@@ -1,23 +1,31 @@
 package com.sqli.bookShop.persistance;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Client implements Serializable {
 
 	public Client(){
 	}
 	
-	private int identifiant;
-	
-	private String nom;
-	
-	private String prenom;
-	
-	private float prix;
-	
-	private List<Commande> commandes;
 
+	private int identifiant;	
+	private String nom;
+	private String prenom;
+
+	public Collection<Commande> commandeList = new ArrayList<Commande>();
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "id_client")
 	public int getIdentifiant() {
 		return identifiant;
 	}
@@ -25,7 +33,8 @@ public class Client implements Serializable {
 	public void setIdentifiant(int identifiant) {
 		this.identifiant = identifiant;
 	}
-
+	
+	@Column( length = 50)
 	public String getNom() {
 		return nom;
 	}
@@ -33,7 +42,8 @@ public class Client implements Serializable {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
+	
+	@Column( length = 50)
 	public String getPrenom() {
 		return prenom;
 	}
@@ -42,20 +52,13 @@ public class Client implements Serializable {
 		this.prenom = prenom;
 	}
 
-	public float getPrix() {
-		return prix;
+	@OneToMany(mappedBy = "client")
+	public Collection<Commande> getCommandes() {
+		return commandeList;
 	}
 
-	public void setPrix(float prix) {
-		this.prix = prix;
-	}
-
-	public List<Commande> getCommandes() {
-		return commandes;
-	}
-
-	public void setCommandes(List<Commande> commandes) {
-		this.commandes = commandes;
+	public void setCommandes(Collection<Commande> commandes) {
+		this.commandeList = commandes;
 	}
 	
 	
