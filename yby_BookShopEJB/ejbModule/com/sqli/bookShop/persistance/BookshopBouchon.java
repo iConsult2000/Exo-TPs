@@ -27,19 +27,22 @@ public class BookshopBouchon {
 	private static void init(){
 		Article a = new Article();
 		a.setNumeroArticle(1);
-		a.setFiliere("filiere1");
+		a.setLibelle("JBOSS ear");
+		a.setFiliere("livre");
 		a.setPrix(12);
 		articles.add(a);
 		
 		Article b = new Article();
 		b.setNumeroArticle(2);
-		b.setFiliere("filiere1");
+		b.setFiliere("livre");
+		a.setLibelle("Mme Boulot Hachette");
 		b.setPrix(15);
 		articles.add(b);
 		
 		Article c = new Article();
 		c.setNumeroArticle(3);
-		c.setFiliere("filiere2");
+		c.setFiliere("Jeu/Jouet");
+		a.setLibelle("Ballon de foot");
 		c.setPrix(8);
 		articles.add(c);
 	}

@@ -2,18 +2,32 @@ package com.sqli.bookShop.persistance;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class LigneDeCommande implements Serializable {
 
+	private int idLigneDeCommande;
+	private int quantite;
+	
+	@JoinColumn(name = "article", referencedColumnName = "id_article")
+	@ManyToOne(optional = false)
+	private Article article;
+	
+
+    @JoinColumn(name = "commande", referencedColumnName = "id_commande")
+    @ManyToOne(optional = false)
+	private Commande commande;
+	
+	
+	//Constructeur
 	public LigneDeCommande() {
 		// TODO Auto-generated constructor stub
 	}
-
-	private Article article;
-
-	private Commande commande;
-	
-	private int idLigneDeCommande;
 	
 	public Commande getCommande() {
 		return commande;
@@ -22,7 +36,9 @@ public class LigneDeCommande implements Serializable {
 	public void setCommande(Commande commande) {
 		this.commande = commande;
 	}
-
+	
+	@Id
+	@GeneratedValue
 	public int getIdLigneDeCommande() {
 		return idLigneDeCommande;
 	}
@@ -30,8 +46,6 @@ public class LigneDeCommande implements Serializable {
 	public void setIdLigneDeCommande(int idLigneDeCommande) {
 		this.idLigneDeCommande = idLigneDeCommande;
 	}
-
-	private int quantite;
 	
 	public void setArticle(Article article) {
 		this.article = article;
@@ -47,12 +61,6 @@ public class LigneDeCommande implements Serializable {
 
 	public int getQuantite() {
 		return quantite;
-	}
-
-	@Override
-	public String toString() {
-		return "LigneDeCommande [article=" + article + ", quantite=" + quantite
-				+ "]";
 	}
 
 	

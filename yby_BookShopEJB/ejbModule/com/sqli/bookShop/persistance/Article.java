@@ -1,14 +1,21 @@
 package com.sqli.bookShop.persistance;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findAllArticles", query = "SELECT a FROM Article a")   })
 public class Article  implements Serializable{
 
 	/**
@@ -17,14 +24,29 @@ public class Article  implements Serializable{
 	private static final long serialVersionUID = -7982388395078212643L;
 
 	public Article() {
-		super();
+		//super();
 	}
-
+	
+	
 	private int numeroArticle;
 	private String filiere;
+	private String libelle;
 	private float prix;
+	
+	
+	public Collection<LigneDeCommande> ligneList = new ArrayList<LigneDeCommande>();
+	
+	
+	@OneToMany(mappedBy = "article")
+	public Collection<LigneDeCommande> getLigneList() {
+		return ligneList;
+	}
 
-	@Column( length = 55)
+	public void setLigneList(Collection<LigneDeCommande> ligneList) {
+		this.ligneList = ligneList;
+	}
+
+	@Column( length = 50)
 	public String getFiliere() {
 		return filiere;
 	}
@@ -35,8 +57,17 @@ public class Article  implements Serializable{
 
 	@Id
 	@GeneratedValue
+	@Column(name = "id_article")
 	public int getNumeroArticle() {
 		return numeroArticle;
+	}
+	@Column( length = 50)
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
 
 	public void setNumeroArticle(int numeroArticle) {

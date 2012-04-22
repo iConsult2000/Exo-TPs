@@ -20,8 +20,8 @@ import com.sqli.bookShop.persistance.BookshopBouchon;
 @Local(BookshopFacadeBeanLocal.class)
 public class BookshopFacadeBean {
 
-	//@PersistenceContext(unitName="bookShopUnit")
-	//protected EntityManager em;
+	@PersistenceContext(unitName="bookShopUnit")
+	protected EntityManager em;
 	
     /**
      * Default constructor. 
@@ -31,8 +31,8 @@ public class BookshopFacadeBean {
     }
 
     public Collection<Article> getAllArticles(){
-    	return BookshopBouchon.getAllArticles();
-    	//return em.createNamedQuery("findAllArticles").getResultList();
+    	//return BookshopBouchon.getAllArticles();
+    	return em.createNamedQuery("findAllArticles").getResultList();
     }
 	
 	public Collection<Article> getAllArticlesFromFiliere(String filiere){
