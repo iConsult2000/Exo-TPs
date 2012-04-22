@@ -9,25 +9,18 @@
 <body>
 
 
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.ingesup.bookshop.persistance.Article" %>
-
 <br/>
+<% if(session.getAttribute("libelle") != null){ %>
 <p>Liste des articles :</p>
-<table>
+<table border="1px" cellspcing="0px" cellpadding="0px" width="700px">
 	<th>Numéro</th>
 	<th>Libèlle</th>
 	<th>Prix</th>
-		<% 
-		if(session.getAttribute("Articles") != null){
-		ArrayList<Article> Articles = (ArrayList<Article>) session.getAttribute("Articles");
-		for(Article a : Articles) { %>
-		<tr>
-			<td><%=a.getNumeroArticle()%></td><td><%=a.getLibelle()%></td><td><%=a.getPrix()%></td><td><a href="#">Add to cart</a></td>
-		</tr>
-		<% }} %>
+	<tr>
+		<td><%=session.getAttribute("libelle").toString() %></td>
+	</tr>
 </table>
-
+<% } %>
 
 <!-- <form action="./ajouter" method="post">
 	<table>

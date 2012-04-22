@@ -1,8 +1,7 @@
 package com.ingesup.bookshop.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -21,8 +20,7 @@ import com.ingesup.bookshop.persistance.Article;
 public class ListeArticlesServlets extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@EJB
-	BookShopFacadeBeanRemote  bookShopFacadeBeanRemote;
+	@EJB	BookShopFacadeBeanRemote bsfbr;
 	/**
      * Default constructor. 
      */
@@ -37,15 +35,20 @@ public class ListeArticlesServlets extends HttpServlet {
     	// TODO Auto-generated method stub
     	HttpSession session = request.getSession(true);
     	
-    	ArrayList<Article> articles = (ArrayList<Article>) bookShopFacadeBeanRemote.getAllArticles();
-    	//System.out.println(articles);
-    
+    	Collection<Article> articles = bsfbr.getAllArticles();
+    	
+    	String libelle = "";
+    	
+    	for(Article a: articles){
+    		libelle = a.getLibelle();
+    	}
         
-        session.setAttribute("Articles",articles);
+        session.setAttribute("libelle", libelle);
         
-        request.getRequestDispatcher("/").forward(request, response);
+        
     	//redirection
-
+        request.getRequestDispatcher("/").forward(request, response);
+        
     	}
 
 	/**
