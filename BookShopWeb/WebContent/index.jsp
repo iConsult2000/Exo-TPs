@@ -10,15 +10,13 @@
 
 
 <br/>
-<% if(session.getAttribute("libelle") != null){ %>
+<% if(session.getAttribute("ListArticles") != null){ %>
 <p>Liste des articles :</p>
 <table border="1px" cellspcing="0px" cellpadding="0px" width="700px">
 	<th>Numéro</th>
 	<th>Libèlle</th>
 	<th>Prix</th>
-	<tr>
-		<td><%=session.getAttribute("libelle").toString() %></td>
-	</tr>
+
 </table>
 <% } %>
 

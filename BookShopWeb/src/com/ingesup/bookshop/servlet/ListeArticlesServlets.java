@@ -37,13 +37,7 @@ public class ListeArticlesServlets extends HttpServlet {
     	
     	Collection<Article> articles = bsfbr.getAllArticles();
     	
-    	String libelle = "";
-    	
-    	for(Article a: articles){
-    		libelle = a.getLibelle();
-    	}
-        
-        session.setAttribute("libelle", libelle);
+    	session.setAttribute("ListArticles", articles);
         
         
     	//redirection

@@ -27,10 +27,13 @@ public class BookShopFacadeBean implements BookShopFacadeBeanRemote, BookShopFac
 		return null;}
     
     public Collection<Article> getAllArticles(){
-    	System.out.println("lister tous les articles in progress...");
+    	/*System.out.println("lister tous les articles in progress...");
 		javax.persistence.Query q = em.createQuery("select a from Article a");	
 		System.out.println(q.getResultList().size()+" articles répertoriés");
-		return q.getResultList();
+		return (Collection<Article>) q.getResultList();*/
+    	System.out.println("lister tous les articles in progress...");
+    	System.out.println(em.createNamedQuery("findAllArticles").getResultList().size()+" articles répertoriés");
+    	return em.createNamedQuery("findAllArticles").getResultList();
     }
     
     public void addArticle(Article article){
