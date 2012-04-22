@@ -46,18 +46,19 @@ public class ShoppingCartBean{
 	}
 
 	public void addLigneCommande(int numeroArticle) {
-		//Vérifie si la commande possède des Lignes de commande
-		if (commande.getLignesDeCommande() == null){
-			commande.setLignesDeCommande(new ArrayList<LigneDeCommande>());
-		}
+//		//Vérifie si la commande possède des Lignes de commande
+//		if (commande.getLignesDeCommande() == null){
+//			commande.setLignesDeCommande(new ArrayList<LigneDeCommande>());
+//		}
 		System.out.println("Passage dans la méthode addLigneCommande()");
-		LigneDeCommande ligne = new LigneDeCommande();
+		//Article a = (Article) em.createNamedQuery("findArticle").setParameter("id_article", numeroArticle).getSingleResult();
 		Article a = new Article();
 		a.setNumeroArticle(numeroArticle);
+		LigneDeCommande ligne = new LigneDeCommande();
 		ligne.setArticle(a);
+		ligne.setQuantite(1);
 		em.persist(ligne);
 		commande.getLignesDeCommande().add(ligne);
-		//BookshopBouchon.addLigneCommande(numeroArticle);
 	}
 
 	public void removeLigneCommande(int numeroArticle) {

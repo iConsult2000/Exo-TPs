@@ -16,11 +16,11 @@
 		<br><br>		
 		<% if ( session.getAttribute("shoppingCart") != null) {
 		Commande com = (Commande) session.getAttribute("shoppingCart");	%>
-		<p>N° Commande : <%=com.getNumeroCommande() %></p>
+		<p>N Commande : <%=com.getNumeroCommande() %></p>
 		<br>
 		<% float somme = 0 ;
 		 int qte = 0 ;%>
-		<table cellpacing=0 cellpadding=0 border="0px">
+		<table cellpacing=0 cellpadding=0 border="0px" width="200px">
 			<tr>
 				<td>Article</td>
 				<td>prix</td>
@@ -28,7 +28,7 @@
 			</tr>
 			<% for (LigneDeCommande lign : (ArrayList<LigneDeCommande>) com.getLignesDeCommande() ){ %>
 			<tr>
-				<td><%=lign.getArticle().getLibelle() %></td>
+				<td><%=lign.getArticle().getNumeroArticle() %></td>
 				<td><% somme = somme + lign.getArticle().getPrix() ;%>
 				<%=lign.getArticle().getPrix()%></td>
 				<td><% qte = qte + lign.getQuantite();%>

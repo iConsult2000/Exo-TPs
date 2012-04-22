@@ -16,7 +16,8 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "findAllArticles", query = "SELECT a FROM Article a"),
-    @NamedQuery(name = "findAllArticleFromFiliere", query = "SELECT a FROM Article a WHERE filiere = :filiere")
+    @NamedQuery(name = "findAllArticleFromFiliere", query = "SELECT a FROM Article a WHERE filiere = :filiere"),
+    @NamedQuery(name = "findArticle", query = "SELECT a FROM Article a WHERE id_article = :id_article")
     })
 public class Article  implements Serializable{
 

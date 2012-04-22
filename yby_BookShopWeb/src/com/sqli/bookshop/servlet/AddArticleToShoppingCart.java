@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sqli.bookShop.persistance.Article;
 import com.sqli.bookShop.persistance.Commande;
 import com.sqli.bookShop.statefull.ShoppingCartBeanLocal;
 
@@ -36,13 +37,11 @@ public class AddArticleToShoppingCart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int numeroArticle = Integer.parseInt(request.getParameter("num")) ;
-		System.out.println(numeroArticle);
 		cart_bean.addLigneCommande(numeroArticle);
-
-		System.out.print(cart_bean.getCommande().getNumeroCommande());
+		Commande cde = cart_bean.getCommande();
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("shoppingCart ", cart_bean.getCommande());
+		session.setAttribute("shoppingCart", cde);
 
 		//redirection
 		request.getRequestDispatcher("/").forward(request, response);

@@ -26,7 +26,7 @@ public class LigneDeCommande implements Serializable {
 	
 	//Constructeur
 	public LigneDeCommande() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	public Commande getCommande() {
