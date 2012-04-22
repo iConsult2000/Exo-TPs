@@ -31,17 +31,15 @@ public class BookshopFacadeBean {
     }
 
     public Collection<Article> getAllArticles(){
-    	//return BookshopBouchon.getAllArticles();
     	return em.createNamedQuery("findAllArticles").getResultList();
     }
 	
 	public Collection<Article> getAllArticlesFromFiliere(String filiere){
-		return null;
-		//return em.createNamedQuery("findAllArticleFromFiliere").setParameter("filiere", filiere).getResultList();
+		return em.createNamedQuery("findAllArticleFromFiliere").setParameter("filiere", filiere).getResultList();
 	}
 	
 	public void addArticle(Article a){
-		//em.persist(a);
+		em.persist(a);
 	}
     
     

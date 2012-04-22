@@ -15,14 +15,14 @@ import javax.persistence.OneToMany;
 @Entity
 public class Commande implements Serializable {
 	
-	private int numeroCommande;
+	private int numeroCommande = 0;
 	
 	public Collection<LigneDeCommande> lignesDeCommande = new ArrayList<LigneDeCommande>();
 	
    
 	
 	@Id
-	@GeneratedValue
+	//@GeneratedValue
 	@Column(name = "id_commande")
 	public int getNumeroCommande() {
 		return numeroCommande;
@@ -46,7 +46,7 @@ public class Commande implements Serializable {
 	}
 	
 	public Commande() {
-		// TODO Auto-generated constructor stub
+		this.numeroCommande++;
 	}
 	
 	@OneToMany(mappedBy = "commande")

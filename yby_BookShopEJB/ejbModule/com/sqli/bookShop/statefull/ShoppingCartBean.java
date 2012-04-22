@@ -24,8 +24,8 @@ public class ShoppingCartBean{
 
 	private Commande commande=null;
 
-	//@PersistenceContext(unitName="bookShopUnit")
-	//protected EntityManager em;
+	@PersistenceContext(unitName="bookShopUnit")
+	protected EntityManager em;
 	
     /**
      * Default constructor. 
@@ -36,26 +36,27 @@ public class ShoppingCartBean{
 
     @PostConstruct
     public void initialize(){
-    	//System.out.println("Methode initialise de ShoppingCartBean");
-    	//commande = new Commande();
+    	System.out.println("Methode initialise de ShoppingCartBean");
+    	commande = new Commande();
     }
 
 	public Commande getCommande() {
-		//System.out.println("Passage dans la méthode getCommande()");
-		//return commande;
-		return null;
+		System.out.println("Passage dans la méthode getCommande()");
+		return commande;
 	}
 
 	public void addLigneCommande(int numeroArticle) {
-//		if (commande.getLignesDeCommande() == null){
-//			commande.setLignesDeCommande(new ArrayList<LigneDeCommande>());
-//		}
-//		LigneDeCommande ligne = new LigneDeCommande();
-//		Article a = new Article();
-//		a.setNumeroArticle(numeroArticle);
-//		ligne.setArticle(a);
-//		em.persist(ligne);
-//		commande.getLignesDeCommande().add(ligne);
+		//Vérifie si la commande possède des Lignes de commande
+		if (commande.getLignesDeCommande() == null){
+			commande.setLignesDeCommande(new ArrayList<LigneDeCommande>());
+		}
+		System.out.println("Passage dans la méthode addLigneCommande()");
+		LigneDeCommande ligne = new LigneDeCommande();
+		Article a = new Article();
+		a.setNumeroArticle(numeroArticle);
+		ligne.setArticle(a);
+		em.persist(ligne);
+		commande.getLignesDeCommande().add(ligne);
 		//BookshopBouchon.addLigneCommande(numeroArticle);
 	}
 
@@ -64,8 +65,8 @@ public class ShoppingCartBean{
 	}
 
 	public void validerAchat(Commande commande) {
-//		em.persist(commande);
-//		BookshopBouchon.validerAchat(commande);		
+		em.persist(commande);
+		//BookshopBouchon.validerAchat(commande);		
 	}
     
 }

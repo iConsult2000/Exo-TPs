@@ -28,6 +28,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AddArticleToShoppingCart</servlet-name>
-    <url-pattern>/AddArticleToShoppingCart</url-pattern>
+    <url-pattern>/AddArticle</url-pattern>
   </servlet-mapping>
 </web-app>

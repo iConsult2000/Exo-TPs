@@ -1,8 +1,6 @@
 package com.sqli.bookshop.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -11,22 +9,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.sqli.bookShop.facade.BookshopFacadeBeanLocal;
-import com.sqli.bookShop.persistance.Article;
+import com.sqli.bookShop.persistance.Commande;
+import com.sqli.bookShop.statefull.ShoppingCartBeanLocal;
+
 
 /**
- * Servlet implementation class ListeArticlesServlet
+ * Servlet implementation class AddArticleToShoppingCart
  */
-public class ListeArticlesServlet extends HttpServlet {
+public class AddArticleToShoppingCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	BookshopFacadeBeanLocal book_shop_facade_local;
-	
+	ShoppingCartBeanLocal cart_bean;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListeArticlesServlet() {
+    public AddArticleToShoppingCart() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,15 +34,18 @@ public class ListeArticlesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		int numeroArticle = Integer.parseInt(request.getParameter("num")) ;
+		System.out.println(numeroArticle);
+		cart_bean.addLigneCommande(numeroArticle);
+
+		System.out.print(cart_bean.getCommande().getNumeroCommande());
 		
-		ArrayList<Article> listeArt = (ArrayList<Article>) book_shop_facade_local.getAllArticles();
-		
-		HttpSession session = request.getSession();		
-		session.setAttribute("lesArticles",listeArt);
-		
+		HttpSession session = request.getSession();
+		session.setAttribute("shoppingCart ", cart_bean.getCommande());
+
 		//redirection
 		request.getRequestDispatcher("/").forward(request, response);
-		
 	}
 
 	/**
