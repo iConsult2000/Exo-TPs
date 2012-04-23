@@ -10,7 +10,7 @@ public interface ShoppingCartBeanRemote {
 	
 	public void addLigneCommande(int numeroArticle);
 
-	public void removeLigneCommande(int numeroArticle);
+	public void removeLigneCommande(int ligneCommande);
 	
 	public void validerAchat(Commande commande);
 

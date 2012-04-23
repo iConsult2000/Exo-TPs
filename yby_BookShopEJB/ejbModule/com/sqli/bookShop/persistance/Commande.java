@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -49,7 +49,7 @@ public class Commande implements Serializable {
 		this.numeroCommande++;
 	}
 	
-	@OneToMany(mappedBy = "commande")
+	@OneToMany(mappedBy = "commande",cascade = CascadeType.ALL)
 	public Collection<LigneDeCommande> getLignesDeCommande() {
 		return lignesDeCommande;
 	}

@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.sqli.bookShop.persistance.Article;
-import com.sqli.bookShop.persistance.BookshopBouchon;
 import com.sqli.bookShop.persistance.Commande;
 import com.sqli.bookShop.persistance.LigneDeCommande;
 
@@ -46,12 +45,7 @@ public class ShoppingCartBean{
 	}
 
 	public void addLigneCommande(int numeroArticle) {
-//		//Vérifie si la commande possède des Lignes de commande
-//		if (commande.getLignesDeCommande() == null){
-//			commande.setLignesDeCommande(new ArrayList<LigneDeCommande>());
-//		}
 		System.out.println("Passage dans la méthode addLigneCommande()");
-		//Article a = (Article) em.createNamedQuery("findArticle").setParameter("id_article", numeroArticle).getSingleResult();
 		Article a = new Article();
 		a.setNumeroArticle(numeroArticle);
 		LigneDeCommande ligne = new LigneDeCommande();
@@ -61,13 +55,21 @@ public class ShoppingCartBean{
 		commande.getLignesDeCommande().add(ligne);
 	}
 
-	public void removeLigneCommande(int numeroArticle) {
-		//@A faire
+	public void removeLigneCommande(int ligneCommande) {
+		ArrayList<LigneDeCommande> lignList = (ArrayList<LigneDeCommande>) commande.getLignesDeCommande();
+		for (int i=0;i < lignList.size();i++){
+			if (lignList.get(i).getIdLigneDeCommande() == ligneCommande){
+				lignList.remove(i);
+				LigneDeCommande l = em.find(LigneDeCommande.class, ligneCommande);
+		        em.remove(l);
+				System.out.println("removeLigneCommande()");
+			}
+		}
+		commande.setLignesDeCommande(lignList);
 	}
 
 	public void validerAchat(Commande commande) {
 		em.persist(commande);
-		//BookshopBouchon.validerAchat(commande);		
 	}
     
 }

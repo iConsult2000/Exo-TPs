@@ -36,9 +36,17 @@ public class AddArticleToShoppingCart extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int numeroArticle = Integer.parseInt(request.getParameter("num")) ;
-		cart_bean.addLigneCommande(numeroArticle);
-		Commande cde = cart_bean.getCommande();
+		String action = request.getParameter("action");
+		int numero = Integer.parseInt(request.getParameter("num")) ;
+		Commande cde = null;
+		
+		if(action.equals("add")){
+			cart_bean.addLigneCommande(numero);
+			cde = cart_bean.getCommande();
+		} else {
+			cart_bean.removeLigneCommande(numero);
+			cde = cart_bean.getCommande();
+		}
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("shoppingCart", cde);

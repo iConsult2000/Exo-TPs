@@ -7,8 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findLigne", query = "SELECT l FROM LigneDeCommande l WHERE idLigneDeCommande = :idLigneDeCommande")
+    })
 public class LigneDeCommande implements Serializable {
 
 	private int idLigneDeCommande;

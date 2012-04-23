@@ -24,7 +24,7 @@
 						<% ArrayList<Article> list = (ArrayList<Article>) session.getAttribute("lesArticles");
 						for(Article art : list) { %>
 						<tr>
-							<td><a href="DetailArticle?num=<%=art.getNumeroArticle() %>"><%=art.getNumeroArticle()%></a></td><td><%=art.getLibelle()%></td><td><%=art.getFiliere()%></td><td><%=art.getPrix()%></td><td><a href="AddArticle?num=<%=art.getNumeroArticle() %>">Add to cart</a></td>
+							<td><a href="DetailArticle?num=<%=art.getNumeroArticle() %>"><%=art.getNumeroArticle()%></a></td><td><%=art.getLibelle()%></td><td><%=art.getFiliere()%></td><td><%=art.getPrix()%></td><td><a href="AddArticle?action=add&num=<%=art.getNumeroArticle() %>">Add to cart</a></td>
 						</tr>
 						<% } %>
 				</table>
