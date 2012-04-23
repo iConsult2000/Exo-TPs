@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:application="http://java.sun.com/xml/ns/javaee/application_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd" id="Application_ID" version="5">
+  <display-name>SDR_Bookshop</display-name>
+  <module>
+    <connector>SDR_BookshopConnector.rar</connector>
+  </module>
+  <module>
+    <java>SDR_BookshopClient.jar</java>
+  </module>
+  <module>
+    <web>
+      <web-uri>SDR_BookshopWeb.war</web-uri>
+      <context-root>SDR_BookshopWeb</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>SDR_BookshopEJB.jar</ejb>
+  </module>
+</application>
