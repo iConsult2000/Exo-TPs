@@ -3,13 +3,18 @@ package com.sqli.bookshop.servlet;
 import java.io.IOException;
 
 import javax.ejb.EJB;
+import javax.jms.Connection;
+import javax.jms.MessageProducer;
+import javax.jms.Queue;
+import javax.jms.QueueConnectionFactory;
+import javax.jms.Session;
+import javax.jms.TextMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.sqli.bookShop.persistance.Article;
 import com.sqli.bookShop.persistance.Commande;
 import com.sqli.bookShop.statefull.ShoppingCartBeanLocal;
 
@@ -39,17 +44,36 @@ public class AddArticleToShoppingCart extends HttpServlet {
 		String action = request.getParameter("action");
 		int numero = Integer.parseInt(request.getParameter("num")) ;
 		Commande cde = null;
+		HttpSession session = request.getSession();
 		
 		if(action.equals("add")){
 			cart_bean.addLigneCommande(numero);
 			cde = cart_bean.getCommande();
-		} else {
+			session.setAttribute("shoppingCart", cde);
+		} else if (action.equals("del")) {
 			cart_bean.removeLigneCommande(numero);
 			cde = cart_bean.getCommande();
+			session.setAttribute("shoppingCart", cde);
+		} else {
+			
+			
+			QueueConnectionFactory ConnectionFactory = (QueueConnectionFactory) jndiContext.lookup("java:comp/env/jms/MyQueueConnectionFactory");
+			Queue queue = (Queue)jndiContext.lookup("java:comp/env/jms/QueueName");
+
+			Connection connection = ConnectionFactory.createConnection();
+			Session session_jms = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
+			MessageProducer messageProducer = session_jms.createProducer(queue);
+			TextMessage message = session_jms.createTextMessage("Commande confirmée");
+			messageProducer.send(message);
+			messageProducer.close();
+			session_jms.close();
+			connection.close();
+			
+			cde = (Commande) session.getAttribute("shoppingCart");
+			cart_bean.validerAchat(cde);
+			session.removeAttribute("shoppingCart");
+			
 		}
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("shoppingCart", cde);
 
 		//redirection
 		request.getRequestDispatcher("/").forward(request, response);

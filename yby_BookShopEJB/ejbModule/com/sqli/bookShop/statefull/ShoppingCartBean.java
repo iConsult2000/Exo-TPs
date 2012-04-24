@@ -69,7 +69,8 @@ public class ShoppingCartBean{
 	}
 
 	public void validerAchat(Commande commande) {
-		em.persist(commande);
+		System.out.println("Passage dans la méthode validerAchat()");
+		//em.persist(commande);
 	}
     
 }

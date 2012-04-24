@@ -17,7 +17,6 @@ import javax.persistence.OneToMany;
 @NamedQueries({
     @NamedQuery(name = "findAllArticles", query = "SELECT a FROM Article a"),
     @NamedQuery(name = "findAllArticleFromFiliere", query = "SELECT a FROM Article a WHERE filiere = :filiere"),
-    @NamedQuery(name = "findArticle", query = "SELECT a FROM Article a WHERE id_article = :id_article")
     })
 public class Article  implements Serializable{
 
@@ -25,19 +24,17 @@ public class Article  implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -7982388395078212643L;
-
-	public Article() {
-		//super();
-	}
-	
 	
 	private int numeroArticle;
 	private String filiere;
 	private String libelle;
 	private float prix;
 	
-	
 	public Collection<LigneDeCommande> ligneList = new ArrayList<LigneDeCommande>();
+
+	public Article() {
+
+	}
 	
 	
 	@OneToMany(mappedBy = "article")
