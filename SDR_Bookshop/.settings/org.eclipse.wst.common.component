@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SDR_Bookshop">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="SDR_BookshopConnector.rar" deploy-path="/" handle="module:/resource/SDR_BookshopConnector/SDR_BookshopConnector">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SDR_BookshopClient.jar" deploy-path="/" handle="module:/resource/SDR_BookshopClient/SDR_BookshopClient">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SDR_BookshopWeb.war" deploy-path="/" handle="module:/resource/SDR_BookshopWeb/SDR_BookshopWeb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SDR_BookshopEJB.jar" deploy-path="/" handle="module:/resource/SDR_BookshopEJB/SDR_BookshopEJB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
