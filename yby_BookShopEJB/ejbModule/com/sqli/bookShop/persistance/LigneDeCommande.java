@@ -18,7 +18,27 @@ public class LigneDeCommande implements Serializable {
 
 	private int idLigneDeCommande;
 	private int quantite;
+	private int id_commande;
+	private int id_article;
 	
+	
+	
+	public int getId_article() {
+		return id_article;
+	}
+
+	public void setId_article(int id_article) {
+		this.id_article = id_article;
+	}
+
+	public int getId_commande() {
+		return id_commande;
+	}
+
+	public void setId_commande(int id_commande) {
+		this.id_commande = id_commande;
+	}
+
 	@JoinColumn(name = "article", referencedColumnName = "id_article")
 	@ManyToOne(optional = false)
 	private Article article;

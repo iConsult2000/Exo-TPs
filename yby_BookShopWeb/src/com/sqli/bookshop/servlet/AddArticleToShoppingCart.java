@@ -4,11 +4,15 @@ import java.io.IOException;
 
 import javax.ejb.EJB;
 import javax.jms.Connection;
+import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.QueueConnectionFactory;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,18 +60,32 @@ public class AddArticleToShoppingCart extends HttpServlet {
 			session.setAttribute("shoppingCart", cde);
 		} else {
 			
+			//Send message to MessageDriven
 			
-			QueueConnectionFactory ConnectionFactory = (QueueConnectionFactory) jndiContext.lookup("java:comp/env/jms/MyQueueConnectionFactory");
-			Queue queue = (Queue)jndiContext.lookup("java:comp/env/jms/QueueName");
+			Context context;
+			try {
+				context = new InitialContext();
+				QueueConnectionFactory ConnectionFactory = (QueueConnectionFactory) context.lookup("java:comp/env/jms/MyQueueConnectionFactory");
+				Queue queue = (Queue)context.lookup("java:comp/env/jms/QueueName");
 
-			Connection connection = ConnectionFactory.createConnection();
-			Session session_jms = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
-			MessageProducer messageProducer = session_jms.createProducer(queue);
-			TextMessage message = session_jms.createTextMessage("Commande confirmée");
-			messageProducer.send(message);
-			messageProducer.close();
-			session_jms.close();
-			connection.close();
+				Connection connection = ConnectionFactory.createConnection();
+				Session session_jms = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
+				MessageProducer messageProducer = session_jms.createProducer(queue);
+				TextMessage message = session_jms.createTextMessage("Commande confirmée");
+				messageProducer.send(message);
+				messageProducer.close();
+				session_jms.close();
+				connection.close();
+				
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JMSException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		
 			
 			cde = (Commande) session.getAttribute("shoppingCart");
 			cart_bean.validerAchat(cde);

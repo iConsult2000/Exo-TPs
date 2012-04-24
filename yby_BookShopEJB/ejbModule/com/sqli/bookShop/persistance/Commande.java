@@ -16,11 +16,20 @@ import javax.persistence.OneToMany;
 public class Commande implements Serializable {
 	
 	private int numeroCommande = 0;
+	private int id_client;
 	
 	public Collection<LigneDeCommande> lignesDeCommande = new ArrayList<LigneDeCommande>();
 	
    
 	
+	public int getId_client() {
+		return id_client;
+	}
+
+	public void setId_client(int id_client) {
+		this.id_client = id_client;
+	}
+
 	@Id
 	//@GeneratedValue
 	@Column(name = "id_commande")
