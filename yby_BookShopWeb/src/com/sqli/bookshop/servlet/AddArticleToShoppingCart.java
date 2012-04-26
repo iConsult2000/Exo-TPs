@@ -54,47 +54,52 @@ public class AddArticleToShoppingCart extends HttpServlet {
 			cart_bean.addLigneCommande(numero);
 			cde = cart_bean.getCommande();
 			session.setAttribute("shoppingCart", cde);
+			//redirection
+			request.getRequestDispatcher("/").forward(request, response);
 		} else if (action.equals("del")) {
 			cart_bean.removeLigneCommande(numero);
 			cde = cart_bean.getCommande();
 			session.setAttribute("shoppingCart", cde);
+			//redirection
+			request.getRequestDispatcher("/").forward(request, response);
 		} else {
 			
 			//Send message to MessageDriven
 			
-			Context context;
-			try {
-				context = new InitialContext();
-				QueueConnectionFactory ConnectionFactory = (QueueConnectionFactory) context.lookup("java:comp/env/jms/MyQueueConnectionFactory");
-				Queue queue = (Queue)context.lookup("java:comp/env/jms/QueueName");
-
-				Connection connection = ConnectionFactory.createConnection();
-				Session session_jms = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
-				MessageProducer messageProducer = session_jms.createProducer(queue);
-				TextMessage message = session_jms.createTextMessage("Commande confirmée");
-				messageProducer.send(message);
-				messageProducer.close();
-				session_jms.close();
-				connection.close();
-				
-			} catch (NamingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JMSException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			Context context;
+//			try {
+//				context = new InitialContext();
+//				QueueConnectionFactory ConnectionFactory = (QueueConnectionFactory) context.lookup("java:comp/env/jms/MyQueueConnectionFactory");
+//				Queue queue = (Queue)context.lookup("java:comp/env/jms/QueueName");
+//
+//				Connection connection = ConnectionFactory.createConnection();
+//				Session session_jms = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
+//				MessageProducer messageProducer = session_jms.createProducer(queue);
+//				TextMessage message = session_jms.createTextMessage("Commande confirmée");
+//				messageProducer.send(message);
+//				messageProducer.close();
+//				session_jms.close();
+//				connection.close();
+//				
+//			} catch (NamingException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (JMSException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			
 		
 			
 			cde = (Commande) session.getAttribute("shoppingCart");
 			cart_bean.validerAchat(cde);
 			session.removeAttribute("shoppingCart");
+			//redirection
+			request.getRequestDispatcher("valider.jsp").forward(request, response);
 			
 		}
 
-		//redirection
-		request.getRequestDispatcher("/").forward(request, response);
+		
 	}
 
 	/**

@@ -29,6 +29,7 @@ public class Article  implements Serializable{
 	private String filiere;
 	private String libelle;
 	private float prix;
+	private int quantite;
 	
 	public Collection<LigneDeCommande> ligneList = new ArrayList<LigneDeCommande>();
 
@@ -82,6 +83,15 @@ public class Article  implements Serializable{
 		this.prix = prix;
 	}
 
-	
-	
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+		
 }
