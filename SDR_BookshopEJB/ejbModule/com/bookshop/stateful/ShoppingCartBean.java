@@ -1,17 +1,24 @@
 package com.bookshop.stateful;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 
-import javax.ejb.EJB;
+import javax.annotation.Resource;
+import javax.ejb.EJBException;
 import javax.ejb.Remove;
+import javax.ejb.SessionSynchronization;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
-import com.bookshop.facade.BookShopFacadeBeanRemote;
+import org.jboss.ejb3.context.spi.SessionContext;
+
 import com.bookshop.persistance.Commande;
 import com.bookshop.persistance.DetailsCommande;
 import com.bookshop.persistance.DetailsCommandePK;
@@ -23,15 +30,15 @@ import com.bookshop.persistance.Produit;
 
 @Stateful(name = "ShoppingCart")
 public class ShoppingCartBean implements ShoppingCartBeanRemote,
-		ShoppingCartBeanLocal, Serializable {
+		ShoppingCartBeanLocal, Serializable, SessionSynchronization {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@EJB
-	BookShopFacadeBeanRemote bsfbeanLocal;
 
+
+	
 	@PersistenceContext
 	EntityManager em;
 
@@ -42,9 +49,8 @@ public class ShoppingCartBean implements ShoppingCartBeanRemote,
 		// TODO Auto-generated constructor stub
 	}
 
-	private	Collection<DetailsCommande> newlistlignedecommande = new ArrayList<DetailsCommande>();
-	
-	
+	private Collection<DetailsCommande> newlistlignedecommande = new ArrayList<DetailsCommande>();
+	private Collection<Produit> listProduits = new ArrayList<Produit>();
 	public Commande initializeCommande() {
 
 		Commande commande = new Commande();
@@ -52,6 +58,7 @@ public class ShoppingCartBean implements ShoppingCartBeanRemote,
 		commande.setDate_commande(currentDate.getTime()); // Mandatory
 		commande.setNo_employe(10); // Mandatory web account
 		newlistlignedecommande = null;
+		listProduits = null;
 		return commande;
 	}
 
@@ -64,7 +71,6 @@ public class ShoppingCartBean implements ShoppingCartBeanRemote,
 		return commande;
 	}
 
-		
 	public Commande addCommande(
 			Collection<DetailsCommande> listlignedecommande, String code_client) {
 
@@ -79,14 +85,15 @@ public class ShoppingCartBean implements ShoppingCartBeanRemote,
 			eachline.getPk().setNo_commande(commande.getNumeroCommande());
 			em.persist(eachline);
 		}
-		
+
 		commande.setDetailsCommande(listlignedecommande);
 		em.merge(commande);
 		System.out.println("addLigneCommande in done");
 		return commande;
 	}
 
-	public void addLigneCommande(int numeroProduit, int quantite, float...remise) {
+	public void addLigneCommande(int numeroProduit, int quantite,
+			float... remise) {
 		// Création de la ligne de commande et mise en collection
 		DetailsCommande lignedecommande = new DetailsCommande();
 		DetailsCommandePK dcPK = new DetailsCommandePK();
@@ -100,23 +107,24 @@ public class ShoppingCartBean implements ShoppingCartBeanRemote,
 		// Pas de remise
 		if (remise.length > 0) {
 			lignedecommande.setRemise(remise[0]);
-		}else {
+		} else {
 			lignedecommande.setRemise(0);
 		}
-		
-		//Recherche du produit
-		Produit produit = em.find(Produit.class, numeroProduit);		
+
+		// Recherche du produit
+		Produit produit = em.find(Produit.class, numeroProduit);
 		lignedecommande.setPrix_unitaire(produit.getPrix_unitaire());
-		
+
 		newlistlignedecommande.add(lignedecommande);
-		
+		listProduits.add(produit);
+
 	}
 
 	public void removeLigneCommande(int numeroArticle) {
 		System.out.println("removeLigneCommande in progress..");
 		int i = 0;
 		for (DetailsCommande e : newlistlignedecommande) {
-			System.out.println("list passed n° "+i);
+			System.out.println("list passed n° " + i);
 			if (e.getPk().getRef_produit() == numeroArticle) {
 				if (newlistlignedecommande.remove(e)) {
 					System.out.println("removeLigneCommande done..");
@@ -127,18 +135,25 @@ public class ShoppingCartBean implements ShoppingCartBeanRemote,
 			}
 			i++;
 		}
-		
 
 	}
 
-	public int validerAchat(String code_client) {
+	public int validerAchat(String code_client){
 		System.out.println("validerAchat in progress...");
-		
-		//renvoi du no_commande
-		return this.addCommande(newlistlignedecommande, code_client).getNumeroCommande();
+		int result = 0;
 		
 
+	
+			// renvoi du no_commande
+			result = this.addCommande(newlistlignedecommande, code_client)
+					.getNumeroCommande();
+			
+
+		
+		return result;
 	}
+		
+	
 
 	@Remove
 	public void checkout() {
@@ -146,6 +161,26 @@ public class ShoppingCartBean implements ShoppingCartBeanRemote,
 		em.close();
 	}
 
-	
+	@Override
+	public void afterBegin() throws EJBException, RemoteException {
+		// TODO Auto-generated method stub
 
-}
+	}
+
+	@Override
+	public void afterCompletion(boolean arg0) throws EJBException,
+			RemoteException {
+		// TODO Auto-generated method stub
+
+	}
+
+
+
+	
+	public void beforeCompletion() throws EJBException, RemoteException {
+		
+		}
+
+	}
+
+

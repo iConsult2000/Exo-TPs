@@ -2,29 +2,26 @@ package com.bookshop.servlet;
 
 import java.io.IOException;
 
-import javax.ejb.EJB;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bookshop.facade.BookShopFacadeBean;
 import com.bookshop.facade.BookShopFacadeBeanLocal;
+import com.bookshop.facade.BookShopFacadeBeanRemote;
 import com.bookshop.models.Cart;
-import com.bookshop.persistance.DetailsCommande;
-import com.bookshop.persistance.DetailsCommandePK;
-import com.bookshop.persistance.Produit;
 import com.bookshop.stateful.ShoppingCartBeanLocal;
+import com.bookshop.stateful.ShoppingCartBeanRemote;
 
 /**
  * Servlet implementation class AddArticleToShoppingCart
  */
 public class AddArticleToShoppingCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	@EJB ShoppingCartBeanLocal shoppingcartbeanLocal;
-	@EJB BookShopFacadeBeanLocal beanfacadeLocal;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -54,26 +51,38 @@ public class AddArticleToShoppingCart extends HttpServlet {
 			// Sauvegarde de la ligne de commande
 			int quantite = 1;
 			int remise = 0;
-			shoppingcartbeanLocal.addLigneCommande(
-					Integer.valueOf(request.getParameter("numeroArticle")),
-					quantite, remise);
 
-			// Recherche du produit
+			try {
+				Context context = new InitialContext();
+				System.out.println("Recherche de l’EJB");
 
-			
+				ShoppingCartBeanRemote shoppingcartbeanRemote = (ShoppingCartBeanRemote) context
+						.lookup("SDR_BookShop/ShoppingCart/remote");
 
-			((Cart) session.getAttribute("sessionCart")).getListproduit().add(
-					beanfacadeLocal.rechercherProduit(Integer
-							.valueOf(request.getParameter("numeroArticle"))));
+				BookShopFacadeBeanRemote beanfacadeRemote = (BookShopFacadeBeanRemote) context
+						.lookup("SDR_BookShop/BookShopStateless/remote");
 
-			// Mise en session
-			session.setAttribute("sessionshoppingcartbeanlocal",
-					shoppingcartbeanLocal);
-			session.setAttribute("sessionbeanfacadeLocal", beanfacadeLocal);
+				shoppingcartbeanRemote.addLigneCommande(
+						Integer.valueOf(request.getParameter("numeroArticle")),
+						quantite, remise);
 
-			// Use dispatcher
-			request.getRequestDispatcher("/WEB-INF/commande.jsp").forward(
-					request, response);
+				// Recherche du produit
+
+				((Cart) session.getAttribute("sessionCart"))
+						.getListproduit()
+						.add(beanfacadeRemote.rechercherProduit(Integer
+								.valueOf(request.getParameter("numeroArticle"))));
+
+				// Mise en session
+				session.setAttribute("sessionshoppingcartbeanRemote",
+						shoppingcartbeanRemote);
+				session.setAttribute("sessionbeanfacadeRemote",
+						beanfacadeRemote);
+
+				
+			} catch (NamingException e) {
+				e.printStackTrace();
+			}
 
 		} else {
 
@@ -81,24 +90,21 @@ public class AddArticleToShoppingCart extends HttpServlet {
 			int quantite = 1;
 			int remise = 0;
 			((ShoppingCartBeanLocal) session
-					.getAttribute("sessionshoppingcartbeanLocal")).addLigneCommande(
-							Integer.valueOf(request.getParameter("numeroArticle")),
-							quantite, remise);
-								
+					.getAttribute("sessionshoppingcartbeanRemote"))
+					.addLigneCommande(Integer.valueOf(request
+							.getParameter("numeroArticle")), quantite, remise);
 
 			((Cart) session.getAttribute("sessionCart")).getListproduit().add(
 					((BookShopFacadeBeanLocal) session
-							.getAttribute("sessionbeanfacadeLocal"))
+							.getAttribute("sessionbeanfacadeRemote"))
 							.rechercherProduit(Integer.valueOf(request
 									.getParameter("numeroArticle"))));
-			
 
-			
-			// Use dispatcher
-			request.getRequestDispatcher("/WEB-INF/commande.jsp").forward(
-					request, response);
 		}
 
+		// Use dispatcher
+		request.getRequestDispatcher("/WEB-INF/commande.jsp").forward(request,
+				response);
 	}
 
 	/**

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
 
-import javax.ejb.EJB;
+import javax.annotation.security.RolesAllowed;
 import javax.jms.JMSException;
 import javax.jms.Queue;
 import javax.jms.QueueConnection;
@@ -23,29 +23,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bookshop.facade.BookShopFacadeBeanLocal;
+import org.jboss.aspects.security.SecurityDomain;
+
+import com.bookshop.facade.BookShopFacadeBeanRemote;
 import com.bookshop.models.PurchaseOrder;
 import com.bookshop.persistance.DetailsCommande;
 import com.bookshop.persistance.Produit;
-import com.bookshop.stateful.ShoppingCartBeanLocal;
+import com.bookshop.stateful.ShoppingCartBeanRemote;
 
 /**
  * Servlet implementation class ValidateOrder
  */
+
 public class ValidateOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	@EJB
-	ShoppingCartBeanLocal shoppingcartbeanLocal;
-	@EJB
-	BookShopFacadeBeanLocal beanfacadeLocal;
 
 	public final static String JNDI_FACTORY = "org.jboss.naming.NamingContextFactory";
 	public final static String JMS_FACTORY = "BSCFactory";
 	public final static String QUEUE = "/queue/BookShopQueue";
-	public final static String JNP_URL="jnp://localhost:1099";
+	public final static String JNP_URL = "jnp://localhost:1099";
 
-	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -61,71 +58,92 @@ public class ValidateOrder extends HttpServlet {
 		env.put(Context.PROVIDER_URL, url);
 		return new InitialContext(env);
 	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
 
-		// creation du bon de commande
-		PurchaseOrder bondecommande = new PurchaseOrder();
-		Collection<DetailsCommande> listlignedecommandes = new ArrayList<DetailsCommande>();
-		Collection<Produit> listProduits = new ArrayList<Produit>();
-		
+		// Initialiser la connection avec l’EJB Remote et la transaction
 
-		bondecommande.setNo_commande(((ShoppingCartBeanLocal) session
-				.getAttribute("sessionshoppingcartbeanlocal"))
-				.validerAchat(request.getParameter("codeclient")));
-
-		
-		
-		listlignedecommandes = ((BookShopFacadeBeanLocal) session
-				.getAttribute("sessionbeanfacadeLocal")).getCommande(
-				bondecommande.getNo_commande()).getDetailsCommande();
-		
-		//Ajout de chaque produit a la liste du bon de commande
-		for (DetailsCommande dc : listlignedecommandes) {
-			
-			listProduits.add(((BookShopFacadeBeanLocal) session
-					.getAttribute("sessionbeanfacadeLocal"))
-					.rechercherProduit(dc.getPk().getRef_produit()));
-		}
-		
-
-		bondecommande.setListProduits(listProduits);
-		
-		session.setAttribute("sessionbondecommande", bondecommande);
-		
-		//Send message to MessageDriven
-		InitialContext ctx;
 		try {
-			ctx = getInitialContext(JNP_URL);
-		
-		QueueConnectionFactory qconFactory = (QueueConnectionFactory) ctx.lookup(JMS_FACTORY);
-		QueueConnection qcon = qconFactory.createQueueConnection();
-		QueueSession qsession = qcon.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-		Queue queue = (Queue) ctx.lookup(QUEUE);
-		QueueSender qsender = qsession.createSender(queue);
-		TextMessage msg = qsession.createTextMessage();
-		qcon.start();
-		msg.setText("Commande confirmée");
-		qsender.send(msg);
-		qsender.close();
-		qsession.close();
-		qcon.close();
+			Context ctx = getInitialContext(JNP_URL);
+			
+
+			// creation du bon de commande
+			PurchaseOrder bondecommande = new PurchaseOrder();
+			Collection<DetailsCommande> listlignedecommandes = new ArrayList<DetailsCommande>();
+			Collection<Produit> listProduits = new ArrayList<Produit>();
+
+			// Validation de la commande en transactionnel
+			
+			// Doing my business
+			bondecommande.setNo_commande(((ShoppingCartBeanRemote) session
+					.getAttribute("sessionshoppingcartbeanRemote"))
+					.validerAchat(request.getParameter("codeclient")));
+
+			
+
+			// Recuperation de la commande persistée
+			listlignedecommandes = ((BookShopFacadeBeanRemote) session
+					.getAttribute("sessionbeanfacadeRemote")).getCommande(
+					bondecommande.getNo_commande()).getDetailsCommande();
+
+			// Ajout de chaque produit a la liste du bon de commande
+			for (DetailsCommande dc : listlignedecommandes) {
+
+				listProduits.add(((BookShopFacadeBeanRemote) session
+						.getAttribute("sessionbeanfacadeRemote"))
+						.rechercherProduit(dc.getPk().getRef_produit()));
+			}
+
+			bondecommande.setListProduits(listProduits);
+
+			session.setAttribute("sessionbondecommande", bondecommande);
+
+			String message = "LA COMMANDE " + bondecommande.getNo_commande()
+					+ " EST CONFIRMEE";
+
+			
+
+			QueueConnectionFactory qconFactory = (QueueConnectionFactory) ctx
+					.lookup(JMS_FACTORY);
+			QueueConnection qcon = qconFactory.createQueueConnection();
+			QueueSession qsession = qcon.createQueueSession(false,
+					Session.AUTO_ACKNOWLEDGE);
+			Queue queue = (Queue) ctx.lookup(QUEUE);
+			QueueSender qsender = qsession.createSender(queue);
+			TextMessage msg = qsession.createTextMessage();
+			qcon.start();
+			msg.setText(message);
+			qsender.send(msg);
+			qsender.close();
+			qsession.close();
+			qcon.close();
+
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 		// Use dispatcher
-					request.getRequestDispatcher("/WEB-INF/purchaseOrder.jsp").forward(
-							request, response);
+		request.getRequestDispatcher("/WEB-INF/purchaseOrder.jsp").forward(
+				request, response);
+
 	}
 
 	/**

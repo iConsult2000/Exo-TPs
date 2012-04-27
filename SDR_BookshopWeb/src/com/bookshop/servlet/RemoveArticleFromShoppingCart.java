@@ -1,20 +1,17 @@
 package com.bookshop.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bookshop.facade.BookShopFacadeBeanLocal;
 import com.bookshop.models.Cart;
 import com.bookshop.persistance.Produit;
-import com.bookshop.stateful.ShoppingCartBeanLocal;
+import com.bookshop.stateful.ShoppingCartBeanRemote;
 
 /**
  * Servlet implementation class RemoveArticleFromShoppingCart
@@ -22,9 +19,7 @@ import com.bookshop.stateful.ShoppingCartBeanLocal;
 public class RemoveArticleFromShoppingCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@EJB
-	ShoppingCartBeanLocal shoppingcartbeanLocal;
-	@EJB BookShopFacadeBeanLocal beanfacadeLocal;
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -46,7 +41,7 @@ public class RemoveArticleFromShoppingCart extends HttpServlet {
 				+ Integer.valueOf(request.getParameter("numeroArticle")));
 
 		//Supprimer le ligne de commande de la commande
-		((ShoppingCartBeanLocal) session.getAttribute("sessionshoppingcartbeanlocal")).removeLigneCommande(Integer.valueOf(request.getParameter("numeroArticle")));
+		((ShoppingCartBeanRemote) session.getAttribute("sessionshoppingcartbeanRemote")).removeLigneCommande(Integer.valueOf(request.getParameter("numeroArticle")));
 		
 		System.out.println("Nombre d'articles du Panier avant :" + ((Cart) session.getAttribute("sessionCart")).getNbrearticles());
 		
