@@ -16,8 +16,13 @@ import javax.persistence.NamedQuery;
     })
 public class LigneDeCommande implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -322601570761147922L;
 	private int idLigneDeCommande;
 	private int quantite;
+
 	
 	@JoinColumn(name = "article", referencedColumnName = "id_article")
 	@ManyToOne(optional = false)

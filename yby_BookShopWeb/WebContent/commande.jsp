@@ -20,11 +20,11 @@
 		<br>
 		<% float somme = 0 ;
 		 int qte = 0 ;%>
-		<table cellpacing=0 cellpadding=0 border="0px" width="200px">
+		<table cellpacing=0 cellpadding=0 border="0px">
 			<tr>
 				<td>Article</td>
 				<td>Qte</td>
-				<td width="20px">prix</td>
+				<td>prix</td>
 				<!-- <td width="2px"></td> -->
 				<td width="2px"></td>
 			</tr>
@@ -36,7 +36,7 @@
 				<td><%=a.getLibelle() %></td>
 				<td><% qte = qte + lign.getQuantite();%>
 				<%= lign.getQuantite()%></td>
-				<td width="20px"><% somme = somme + a.getPrix() ;%>
+				<td><% somme = somme + a.getPrix() ;%>
 				<%=a.getPrix()%></td>
 				<!-- <td width="2px"><a href="#">+</td> -->
 				<td width="2px"><a href="AddArticle?action=del&num=<%=lign.getIdLigneDeCommande()%>">del</a></td>
@@ -48,10 +48,10 @@
 			 	<td>TOTAL</td><td><%=qte %></td><td><%=somme %> &euro;</td><td></td><td></td>
 			 <tr>
 		</table>
-		<p><a href="#">Valider Achat</a></p>
-		<% } else { %>
+		<p><a href="AddArticle?action=valid&num=<%=com.getNumeroCommande() %>">Valider Achat</a></p>
+		<% } else {%>
 			<p>Panier vide</p>
-		<% } %>		
+		<%}%>		
 	</div>
 <!-- </body>
 </html> -->
