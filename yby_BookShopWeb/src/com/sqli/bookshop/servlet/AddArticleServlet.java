@@ -1,8 +1,6 @@
 package com.sqli.bookshop.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -15,18 +13,17 @@ import com.sqli.bookShop.facade.BookshopFacadeBeanLocal;
 import com.sqli.bookShop.persistance.Article;
 
 /**
- * Servlet implementation class ListeArticlesServlet
+ * Servlet implementation class AddArticleServlet
  */
-public class ListeArticlesServlet extends HttpServlet {
+public class AddArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+    
 	@EJB
-	BookshopFacadeBeanLocal book_shop_facade_local;
-	
+	BookshopFacadeBeanLocal book_bean;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListeArticlesServlet() {
+    public AddArticleServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,22 +32,35 @@ public class ListeArticlesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ArrayList<Article> listeArt = (ArrayList<Article>) book_shop_facade_local.getAllArticles();
-		
-		HttpSession session = request.getSession();		
-		session.setAttribute("lesArticles",listeArt);
-		
-		//redirection
-		request.getRequestDispatcher("listeArticle.jsp").forward(request, response);
-		
+		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String filiere = request.getParameter("filiere");
+		String libelle = request.getParameter("libelle");
+		float prix = Float.parseFloat(request.getParameter("prix")) ;
+		int qte = Integer.parseInt(request.getParameter("quantite")) ;
+		String yes;
+
+			Article a = new Article();
+			a.setFiliere(filiere);
+			a.setLibelle(libelle);
+			a.setPrix(prix);
+			a.setQuantite(qte);
+			
+			book_bean.addArticle(a);
+			yes = a.getLibelle();
+		
+		HttpSession session = request.getSession();		
+		session.setAttribute("art",yes);
+		
+		//redirection
+		request.getRequestDispatcher("/article.jsp").forward(request, response);
+		
+		
 	}
 
 }

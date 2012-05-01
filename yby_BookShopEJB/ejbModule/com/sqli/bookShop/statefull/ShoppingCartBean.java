@@ -55,25 +55,45 @@ public class ShoppingCartBean implements SessionSynchronization {
 	}
 
 	public void addLigneCommande(int numeroArticle) {
+		//Vérifie si commande exist
 		if (instance == false){
 			commande = new Commande();
+			instance = true;
+			
 		}
+		boolean exist = false;
 		System.out.println("Passage dans la méthode addLigneCommande()");
-		Article a = new Article();
-		a.setNumeroArticle(numeroArticle);
-		LigneDeCommande ligne = new LigneDeCommande();
-		ligne.setArticle(a);
-		ligne.setQuantite(1);
-		em.persist(ligne);
-		commande.getLignesDeCommande().add(ligne);
+		ArrayList<LigneDeCommande> lignList = (ArrayList<LigneDeCommande>) commande.getLignesDeCommande();
+		for(int i=0;i< lignList.size();i++ ){
+			//Vérifie si la ligne exit avec ce num article 
+			if(lignList.get(i).getArticle().getNumeroArticle() == numeroArticle){
+				exist = true;
+				//incrémente la quantité
+				lignList.get(i).setQuantite(lignList.get(i).getQuantite()+1);
+				//update in database
+				em.merge(lignList.get(i));
+				commande.setLignesDeCommande(lignList);
+			}
+		} 
+		if(!exist){
+			Article a = new Article();
+			a.setNumeroArticle(numeroArticle);
+			LigneDeCommande ligne = new LigneDeCommande();
+			ligne.setArticle(a);
+			ligne.setQuantite(1);
+			em.persist(ligne);
+			commande.getLignesDeCommande().add(ligne);
+		}
 	}
 
 	public void removeLigneCommande(int ligneCommande) {
 		ArrayList<LigneDeCommande> lignList = (ArrayList<LigneDeCommande>) commande.getLignesDeCommande();
 		for (int i=0;i < lignList.size();i++){
 			if (lignList.get(i).getIdLigneDeCommande() == ligneCommande){
+				//Suppression List pour la session 
 				lignList.remove(i);
 				LigneDeCommande l = em.find(LigneDeCommande.class, ligneCommande);
+				//Suppression en base
 		        em.remove(l);
 				System.out.println("removeLigneCommande()");
 			}
@@ -93,12 +113,12 @@ public class ShoppingCartBean implements SessionSynchronization {
 		}
 		em.persist(commande);
 		instance = false;
+		
 //		Context context = new InitialContext();
-//		ShoppingCartBeanRemote bsfRemote = (ShoppingCartBeanRemote) context
-//				.lookup("Ingesup/ShoppingCart/remote");
-		   
+//		ShoppingCartBeanRemote bsfRemote = (ShoppingCartBeanRemote) context.lookup("Ingesup/ShoppingCart/remote");
+//		   
 //		UserTransaction ut = (UserTransaction) context.getUserTransaction();
-
+//
 //		   try {
 //		      ut.begin();
 //
