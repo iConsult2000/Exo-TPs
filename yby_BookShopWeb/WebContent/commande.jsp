@@ -24,7 +24,6 @@
 			<tr>
 				<td>Article</td>
 				<td align="center">Qte</td>
-				<td width="2px"></td>
 				<td>prix</td>
 				<td width="2px"></td>
 			</tr>
@@ -35,17 +34,17 @@
 			<tr>
 				<td><%=a.getLibelle() %></td>
 				<td align="center"><% qte = qte + lign.getQuantite();%>
-				<%= lign.getQuantite()%></td>
-				<td width="2px"><a href="AddArticle?action=add&num=<%=art.getNumeroArticle() %>">+</td>
+				<%= lign.getQuantite()%>
+				<a href="AddArticle?action=add&num=<%=art.getNumeroArticle() %>" title="add quantite" alt="add quantite">+</td>
 				<td><% somme = somme + (a.getPrix()*lign.getQuantite()) ;%>
 				<%=a.getPrix()%></td>
-				<td width="2px"><a href="AddArticle?action=del&num=<%=lign.getIdLigneDeCommande()%>">del</a></td>
+				<td width="2px"><a href="AddArticle?action=del&num=<%=lign.getIdLigneDeCommande()%>" title="Supprimer la ligne" alt="Supprimer la ligne">del</a></td>
 			</tr>
 				<% }//fin si 
 				} //fin bouble liste article%>
 			 <% } %>
 			 <tr>
-			 	<td></td><td>TOTAL</td><td><%=qte %></td><td><%=somme %> &euro;</td><td></td>
+			 	<td>TOTAL</td><td align="center"><%=qte %></td><td><%=(double)((int)(somme*100))/100 %> &euro;</td><td></td>
 			 <tr>
 		</table>
 		<p><a href="AddArticle?action=valid&num=<%=com.getNumeroCommande() %>">Valider Achat</a></p>

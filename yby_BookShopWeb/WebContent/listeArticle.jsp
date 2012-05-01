@@ -17,12 +17,12 @@
 				<br>
 				<table cellspcing="0" cellpadding="0" width="500px">
 					<tr>
-						<td>Numéro </td><td>Libelle<td>Filière </td><td>Prix €</td><td></td>
+						<td>Ref </td><td>Libelle<td>Filière </td><td>Prix €</td><td></td>
 					<tr>
 						<% ArrayList<Article> list = (ArrayList<Article>) session.getAttribute("lesArticles");
 						for(Article art : list) { %>
 						<tr>
-							<td><a href="DetailArticle?num=<%=art.getNumeroArticle() %>"><%=art.getNumeroArticle()%></a></td>
+							<td><%=art.getNumeroArticle()%></td>
 							<td><%=art.getLibelle()%></td>
 							<td><%=art.getFiliere()%></td>
 							<td><%=art.getPrix()%></td>
