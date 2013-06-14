@@ -15,13 +15,3 @@
    </local-tx-datasource>
 </datasources>
 
-<!-- 
-<datasources>
-	<local-tx-datasource>
-		<jndi-name>bookShopDS</jndi-name>
-		<connection-url>jdbc:mysql://localhost:3306/bookshop</connection-url>
-		<driver-class>com.mysql.jdbc.Driver</driver-class>
-		<user-name>root</user-name>
-		<password>iConsult2000</password>
-	</local-tx-datasource>
-</datasources> -->

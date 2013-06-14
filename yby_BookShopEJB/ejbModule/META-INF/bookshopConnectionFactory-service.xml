@@ -1,0 +1,27 @@
+<mbean code="org.jboss.jms.server.connectionfactory.ConnectionFactory"
+	name="jboss.messaging.connectionfactory:service=BSCFactoryService"
+	xmbean-dd="xmdesc/ConnectionFactory-xmbean.xml">
+	<depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends>
+	<depends optional-attribute-name="Connector">jboss.messaging:service=Connector,transport=bisocket</depends>
+	<depends>jboss.messaging:service=PostOffice</depends>
+	<attribute name="JNDIBindings">
+		<bindings>
+			<binding>/BSCFactory</binding>
+			<binding>/factories/cf</binding>
+		</bindings>
+	</attribute>
+
+	PostOffice is non clustered. So connection factory will *not* support failover
+	<attribute name="SupportsFailover">false</attribute>
+	<attribute name="SupportsLoadBalancing">false</attribute>
+
+	<attribute name="PrefetchSize">1000</attribute>
+	<attribute name="SlowConsumers">false</attribute>
+	<attribute name="StrictTck">true</attribute>
+	<attribute name="SendAcksAsync">false</attribute>
+	<attribute name="DefaultTempQueueFullSize">50000</attribute>
+	<attribute name="DefaultTempQueuePageSize">1000</attribute>
+	<attribute name="DefaultTempQueueDownCacheSize">1000</attribute>
+	<attribute name="DupsOKBatchSize">10000</attribute>
+</mbean>
+
