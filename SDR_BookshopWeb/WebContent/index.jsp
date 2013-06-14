@@ -21,7 +21,7 @@
 		<h3>Accéder au TP</h3>
 
 		<a href="login">Cliquer ici</a><br/>
-		<a href="/SDR_BookshopWeb/admin/secured.jsp">Acces securisé</a>
+		<a href="/SDR_BookshopWeb/restricted/secured.jsp">Acces securisé</a>
 
 	</div>
 	<div class="footer">

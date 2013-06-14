@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<jboss-web>
+    <!-- Use the JaasSecurityMgr other security domain for authentication
+      and authorization of secured web content.
+     -->
+     
+    <security-domain flushOnSessionInvalidation="true">java:/jaas/ATOSDomain</security-domain>
+
+    
+</jboss-web>
+
+
+
+
+

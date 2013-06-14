@@ -51,7 +51,7 @@ public class ListeArticlesServlet extends javax.servlet.http.HttpServlet
 				System.out.println("Recherche de l’EJB");
 
 				BookShopFacadeBeanRemote beanfacadeRemote = (BookShopFacadeBeanRemote) context
-						.lookup("SDR_BookShop/BookShopStateless/remote");
+						.lookup("SDR_Bookshop/BookShopStateless/remote");
 
 				// Recuperation de la liste
 				stock.addStore(beanfacadeRemote.getAllArticles());

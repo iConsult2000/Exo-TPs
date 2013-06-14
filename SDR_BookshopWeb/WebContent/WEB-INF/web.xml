@@ -69,42 +69,39 @@
 		<url-pattern>/valOrder</url-pattern>
 	</servlet-mapping>
 
+	<security-constraint>
+		<display-name>Contrainte_1</display-name>
+		<web-resource-collection>
+			<web-resource-name>SecuredRessources</web-resource-name>
+			<url-pattern>/restricted/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>Administration du site</description>
+			<role-name>sqlistrator</role-name>
+			<role-name>administrator</role-name>
+			<role-name>visitor</role-name>
+		</auth-constraint>
+	</security-constraint>
 
-
-<!-- 	<login-config> -->
-<!-- 		<auth-method>BASIC</auth-method> -->
-<!-- 		<realm-name>other</realm-name> -->
-<!-- 	</login-config> -->
 	<login-config>
-		<auth-method>FORM</auth-method>
-		<form-login-config>
-			<form-login-page>/login.jsp</form-login-page>
-			<form-error-page>/WEB-INF/error.jsp</form-error-page>
-		</form-login-config>
+		<!-- <auth-method>FORM</auth-method> -->
+		<!-- <form-login-config> -->
+		<!-- <form-login-page>/login.jsp</form-login-page> -->
+		<!-- <form-error-page>/WEB-INF/error.jsp</form-error-page> -->
+		<!-- </form-login-config> -->
+
+		<auth-method>BASIC</auth-method>
+		<realm-name>TESTING</realm-name>
 	</login-config>
 
 	<security-role>
-		<description>administrator</description>
-		<role-name>admin</role-name>
+		<role-name>sqlistrator</role-name>
 	</security-role>
 	<security-role>
-		<description>visitor</description>
-		<role-name>sqli</role-name>
+		<role-name>administrator</role-name>
 	</security-role>
-
-	<security-constraint>
-		<display-name>Contrainte 1</display-name>
-		<web-resource-collection>
-			<web-resource-name>all resources</web-resource-name>
-			<description />
-			<url-pattern>/admin/*</url-pattern>
-			<http-method>POST</http-method>
-			<http-method>GET</http-method>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>admin</role-name>
-			<role-name>sqli</role-name>
-		</auth-constraint>
-	</security-constraint>
+	<security-role>
+		<role-name>visitor</role-name>
+	</security-role>	
 
 </web-app>

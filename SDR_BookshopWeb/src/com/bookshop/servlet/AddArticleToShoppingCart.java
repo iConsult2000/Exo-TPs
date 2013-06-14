@@ -57,10 +57,10 @@ public class AddArticleToShoppingCart extends HttpServlet {
 				System.out.println("Recherche de l’EJB");
 
 				ShoppingCartBeanRemote shoppingcartbeanRemote = (ShoppingCartBeanRemote) context
-						.lookup("SDR_BookShop/ShoppingCart/remote");
+						.lookup("SDR_Bookshop/ShoppingCart/remote");
 
 				BookShopFacadeBeanRemote beanfacadeRemote = (BookShopFacadeBeanRemote) context
-						.lookup("SDR_BookShop/BookShopStateless/remote");
+						.lookup("SDR_Bookshop/BookShopStateless/remote");
 
 				shoppingcartbeanRemote.addLigneCommande(
 						Integer.valueOf(request.getParameter("numeroArticle")),
