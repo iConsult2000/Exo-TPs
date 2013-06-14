@@ -16,6 +16,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao{
 
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Customer> findAllCustomer(){
 		
 		return getHibernateTemplate().find("from Customer");

@@ -2,6 +2,7 @@ package com.mkyong.customer.model;
 
 import java.util.Date;
 
+@SuppressWarnings("serial")
 public class Customer implements java.io.Serializable {
 
 	private long customerId;

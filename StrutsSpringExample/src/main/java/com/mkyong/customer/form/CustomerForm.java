@@ -7,6 +7,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
+@SuppressWarnings("serial")
 public class CustomerForm extends ActionForm {
 
 	private String name;
