@@ -19,6 +19,12 @@
 		<url>file:///home/sdacalor/Ide/repository/</url>
 	</repository>
 
+	<repository>
+        <id>central-sync</id>
+        <name>Central Sync Sources</name>
+        <url>https://oss.sonatype.org/content/repositories/central-sync</url>
+      </repository>
+      
   </repositories>
 
   <dependencies>
@@ -123,9 +129,33 @@
 		<version>2.7.7</version>
 	</dependency>
 	<!-- Hibernate query library dependecy end -->
+	
+	<!-- Maven dependecy start -->
+	<dependency>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-resources-plugin</artifactId>
+		<version>2.4.3</version>
+	</dependency>
+		
+      
+	<dependency>
+		<groupId>asm</groupId>
+		<artifactId>asm</artifactId>
+		<version>3.3.1</version>
+	</dependency>
+	
+	
+	<dependency>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-surefire-plugin</artifactId>
+		<version>2.7.1</version>
+	</dependency>
+            
+	
+	<!-- Maven dependecy end -->
     
   </dependencies>
   <build>
-    <finalName>StrutsExample</finalName>
+    <finalName>StrutsSpringExample</finalName>
   </build>
 </project>
