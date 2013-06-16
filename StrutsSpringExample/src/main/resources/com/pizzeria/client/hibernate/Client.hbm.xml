@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="com.pizzeria.client.model"> 
+    <class name="Client" table="client" schema="mkyong"> 
+    
+    	<id name="clientId" type="long" column="CLIENT_ID">
+			<generator class="identity"/>
+		</id>
+		
+        <property name="nom" type="string">
+            <column name="NOM" length="45" not-null="true" />
+        </property>
+        <property name="adresse" type="string">
+            <column name="ADRESSE" not-null="true" />
+        </property>
+		
+		<property name="prenom" type="string">
+				<column name="PRENOM" length="45" not-null="true"/>
+		</property>
+		
+		<property name="tel">
+				<column name="TELEPHONE" length="10" />
+		</property>
+    	
+    	
+    	
+    </class>
+ 
+</hibernate-mapping>
