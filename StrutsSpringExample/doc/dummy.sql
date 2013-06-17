@@ -46,7 +46,9 @@ CREATE TABLE  `ITALIA`.`customer` (
   PRIMARY KEY (`CUSTOMER_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/* Jeu de données */
+/* Jeu de données
+ * Cherche volontaire
+ *  */
 
 
 
