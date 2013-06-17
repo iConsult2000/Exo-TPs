@@ -21,7 +21,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
  
     <property name="mappingResources">
 		<list>
-	           <value>com/mkyong/customer/hibernate/Customer.hbm.xml</value>
+	           <value>com/pizzeria/customer/hibernate/Customer.hbm.xml</value>
 	           <value>com/pizzeria/pizza/hibernate/Pizza.hbm.xml</value>
 		</list>
      </property>	

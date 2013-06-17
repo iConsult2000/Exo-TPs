@@ -49,12 +49,13 @@
 	</dependency>
 	
     <!-- J2EE library -->
-	<dependency>
-	  <groupId>javax</groupId>
-	  <artifactId>javaee-api</artifactId>
-	  <version>6.0</version>
-	</dependency>
-
+<dependency>
+    <groupId>javax</groupId>
+    <artifactId>javaee-api</artifactId>
+    <version>6.0</version>
+    <scope>provided</scope>
+</dependency>
+ 
     <!-- Unit Test -->
     <dependency>
       <groupId>junit</groupId>

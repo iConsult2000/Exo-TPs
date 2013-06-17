@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="com.pizzeria.pizza.model">
+ 
+    <class name="Pizza" table="PIZZA" schema="mkyong"> 
+    
+    	<id name="pizzaId" type="long" column="PIZZA_ID">
+			<generator class="identity"/>
+		</id>
+		
+		<discriminator column="NOM" type="string" length="45" not-null="true"/>
+		
+    
+		<property name="prix" type="float">
+				<column name="PRIX" not-null="true" />
+		</property>
+		
+     	<subclass name="PizzaOriental" discriminator-value="Oriental">
+    	</subclass>
+    	
+    	<subclass name="PizzaVegetarienne" discriminator-value="Végétarienne" >
+
+    	</subclass>
+    	
+    	<subclass name="Pizza4fromages" discriminator-value="4frommages" >
+    	</subclass>
+    	
+    	
+    	<subclass name="PizzaMargherita" discriminator-value="Margherita" >
+    	</subclass>
+    	
+    	
+    	
+    </class>
+ 
+</hibernate-mapping>

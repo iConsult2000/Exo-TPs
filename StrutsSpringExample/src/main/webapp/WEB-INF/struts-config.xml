@@ -7,7 +7,7 @@
  
 	<form-beans>
 		<form-bean name="customerForm"   
-		      type="com.mkyong.customer.form.CustomerForm" />
+		      type="com.pizzeria.customer.form.CustomerForm" />
 		
 		<form-bean name="dynaCustomerListForm"   
 		      type="org.apache.struts.action.DynaActionForm">
@@ -26,7 +26,7 @@
 
 		<action
 			path="/AddCustomer"
-			type="com.mkyong.customer.action.AddCustomerAction"
+			type="com.pizzeria.customer.action.AddCustomerAction"
 			name="customerForm"
 			validate="true"
 			input="/pages/customer/add_customer.jsp"
@@ -37,7 +37,7 @@
 		
 		<action
 			path="/ListCustomer"
-			type="com.mkyong.customer.action.ListCustomerAction"
+			type="com.pizzeria.customer.action.ListCustomerAction"
 			name="dynaCustomerListForm"
 			>	
  
@@ -48,7 +48,7 @@
 	</action-mappings>
  
 	<message-resources
-		parameter="com.mkyong.customer.properties.Customer" />
+		parameter="com.pizzeria.customer.properties.Customer" />
  
  	<!-- Spring Struts plugin -->
  	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
