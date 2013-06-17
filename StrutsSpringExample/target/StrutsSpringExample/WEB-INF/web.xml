@@ -27,7 +27,7 @@
   
     <!-- The Usual Welcome File List -->
   <welcome-file-list>
-    <welcome-file>list_customer.jsp</welcome-file>
+    <welcome-file>ListCustomer.do</welcome-file>
   </welcome-file-list>
 
 

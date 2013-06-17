@@ -5,7 +5,7 @@
 <head>
 </head>
 <body>
-<h1>Struts + Spring + Hibernate example</h1>
+<h1>Italia Pizzeria</h1>
 
 <h2>Add Customer</h2>
 <div style="color:red">
@@ -20,6 +20,22 @@
 	</div> 
  
 	<html:text property="name" size="40" maxlength="20"/>
+</div>
+
+<div style="padding:16px">
+	<div style="float:left;width:100px;">
+		<bean:message key="customer.label.firstname" /> : 
+	</div> 
+ 
+	<html:text property="firstname" size="40" maxlength="20"/>
+</div>
+
+<div style="padding:16px">
+	<div style="float:left;width:100px;">
+		<bean:message key="customer.label.tel" /> : 
+	</div> 
+ 
+	<html:text property="tel" size="10" maxlength="20"/>
 </div>
 
 <div style="padding:16px">

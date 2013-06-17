@@ -11,6 +11,8 @@ import org.apache.struts.action.ActionMessage;
 public class CustomerForm extends ActionForm {
 
 	private String name;
+	private String firstname;
+	private String tel;
 	private String address;
 
 	public String getName() {
@@ -19,6 +21,34 @@ public class CustomerForm extends ActionForm {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the firstname
+	 */
+	public String getFirstname() {
+		return firstname;
+	}
+
+	/**
+	 * @return the tel
+	 */
+	public String getTel() {
+		return tel;
+	}
+
+	/**
+	 * @param firstname the firstname to set
+	 */
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	/**
+	 * @param tel the tel to set
+	 */
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 	public String getAddress() {

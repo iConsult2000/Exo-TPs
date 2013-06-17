@@ -9,10 +9,16 @@
             <generator class="identity" />
         </id>
         <property name="name" type="string">
-            <column name="NAME" length="45" not-null="true" />
+            <column name="NOM" length="45" not-null="true" />
+        </property>
+        <property name="firstname" type="string">
+            <column name="PRENOM" length="45" not-null="true" />
         </property>
         <property name="address" type="string">
-            <column name="ADDRESS" not-null="true" />
+            <column name="ADRESSE" not-null="true" />
+        </property>
+        <property name="tel" type="string">
+            <column name="TELEPHONE" not-null="false"/>
         </property>
         <property name="createdDate" type="timestamp">
             <column name="CREATED_DATE" length="19" not-null="true" />
