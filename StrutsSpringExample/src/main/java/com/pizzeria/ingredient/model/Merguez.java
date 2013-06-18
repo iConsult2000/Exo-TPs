@@ -17,7 +17,7 @@ public class Merguez extends Ingredient {
 	@Override
 	public float getPrix() {
 		// TODO Auto-generated method stub
-		return (float) 1.5;
+		return prix;
 	}
 
 	

@@ -61,6 +61,77 @@ CREATE TABLE  `ITALIA`.`customer` (
  *  */
 
 
+insert into PIZZA values ('','Pizza Dolce Italia','');
+insert into PIZZA values ('','Pizza carciofi','');
+insert into PIZZA values ('','Pizza chèvre et courgette','');
+insert into PIZZA values ('','Pizza aux légumes grillés','');
+insert into PIZZA values ('','Pizza artichaut et coppa','');
+insert into PIZZA values ('','Pizza melon et jambon cru Italia','');
+insert into PIZZA values ('','Pizza Bresaola et Roquette','');
+
+
+insert into customer values ('', 'DACALOR', 'Steeve', 'Rue basse, Auneau 28700, EURE-ET-LOIR', '0234678912',SYSDATE());
+insert into customer values ('', 'BRAY', 'Yohann', 'Place de Vinci, Paris 75120, PARIS', '0934678912',SYSDATE());
+insert into customer values ('', 'PHEJAR', 'Manuel', 'Espace de LIsle, Vendôme 34000, ARPAJON', '0345678912',SYSDATE());
+insert into customer values ('', 'FERRAND', 'Lory', 'Résidence les Charmilles, Nîmes 35000, NÎMES', '0654127895',SYSDATE());
+
+
+
+insert into ingredient values ('','Boeuf','1.5');
+insert into ingredient values ('','Légumes','1.5');
+insert into ingredient values ('', 'Emmental', '1.0');
+insert into ingredient values ('','Jambon', '1.0');
+insert into ingredient values ('','Merguez','1.5');
+insert into ingredient values ('','PateEpaisse','1.0');
+insert into ingredient values ('','PateFine','0.5');
+insert into ingredient values ('','Poulet','1.5');
+
+/* Pizza Dolce Italia (Boeuf, Jambon, Merguez, Poulet, PateFine) */
+insert into ingredient_pizza values ('','Boeuf','Pizza Dolce Italia','10','10');
+insert into ingredient_pizza values ('','Jambon','Pizza Dolce Italia','13','10');
+insert into ingredient_pizza values ('','Merguez','Pizza Dolce Italia','14','10');
+insert into ingredient_pizza values ('','Poulet','Pizza Dolce Italia','17','10');
+insert into ingredient_pizza values ('','PateFine','Pizza Dolce Italia','16','10');
+
+/* Pizza carciofi(Légumes,Merguez, PateEpaisse) */
+insert into ingredient_pizza values ('','Boeuf','Pizza carciofi','10','11');
+insert into ingredient_pizza values ('','Jambon','Pizza carciofi','13','11');
+insert into ingredient_pizza values ('','Merguez','Pizza carciofi','14','11');
+
+/* Pizza chèvre et courgette ( Emmental, légumes, PateFine) */
+insert into ingredient_pizza values('','Emmental','Pizza chèvre et courgette','12','12');
+insert into ingredient_pizza values('','Légumes','Pizza chèvre et courgette','11','12');
+insert into ingredient_pizza values('','PateFine','Pizza chèvre et courgette','Légumes16','12');
+
+/* Pizza aux légumes grillés (5 légumes, PateEpaisse) */
+insert into ingredient_pizza values('','Légumes','Pizza aux légumes grillés','11','13');
+insert into ingredient_pizza values('','Légumes','Pizza aux légumes grillés','11','13');
+insert into ingredient_pizza values('','Légumes','Pizza aux légumes grillés','11','13');
+insert into ingredient_pizza values('','Légumes','Pizza aux légumes grillés','11','13');
+insert into ingredient_pizza values('','Légumes','Pizza aux légumes grillés','11','13');
+insert into ingredient_pizza values('','PateEpaisse','Pizza aux légumes grillés','15','13');
+
+
+/* Pizza artichaut et coppa (3 légumes, Poulet, PateFine) */
+
+insert into ingredient_pizza values('','Légumes','Pizza artichaut et coppa','11','14');
+insert into ingredient_pizza values('','Légumes','Pizza artichaut et coppa','11','14');
+insert into ingredient_pizza values('','Légumes','Pizza artichaut et coppa','11','14');
+insert into ingredient_pizza values('','Poulet','Pizza artichaut et coppa','17','14');
+insert into ingredient_pizza values('','PateFine','Pizza artichaut et coppa','16','14');
+
+/* Pizza melon et jambon cru Italia (légumes, Jambon, PateFine) */
+insert into ingredient_pizza values('','Légumes','Pizza melon et jambon cru Italia','11','15');
+insert into ingredient_pizza values('','Jambon','Pizza melon et jambon cru Italia','13','15');
+insert into ingredient_pizza values('','PateFine','Pizza melon et jambon cru Italia','16','15');
+
+/* Pizza Bresaola et Roquette (légumes, Jambon,Boeuf, PateFine) */
+insert into ingredient_pizza values('','Légumes','Pizza Bresaola et Roquette','11','16');
+insert into ingredient_pizza values('','Jambon','Pizza Bresaola et Roquette','13','16');
+insert into ingredient_pizza values('','Boeuf','Pizza Bresaola et Roquette','10','16');
+insert into ingredient_pizza values('','PateFine','Pizza Bresaola et Roquette','16','16');
+
+
 
 /*  Table de conversion des types MySQL vers les classes Java
 http://dev.mysql.com/doc/refman/5.0/en/connector-j-reference-type-conversions.html */

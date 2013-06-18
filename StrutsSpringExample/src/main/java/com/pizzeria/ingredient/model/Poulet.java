@@ -10,7 +10,7 @@ public class Poulet extends Ingredient {
 	@Override
 	public float getPrix() {
 		// TODO Auto-generated method stub
-		return (float) 1.5;
+		return prix;
 	}
 	
 	@Override

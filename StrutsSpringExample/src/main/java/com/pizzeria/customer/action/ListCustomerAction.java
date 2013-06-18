@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -11,6 +12,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
 import org.springframework.web.struts.ActionSupport;
 
+import com.pizzeria.cart.model.Cart;
 import com.pizzeria.customer.bo.CustomerBo;
 import com.pizzeria.customer.model.Customer;
  
@@ -28,6 +30,14 @@ public class ListCustomerAction extends ActionSupport{
 		List<Customer> list = customerBo.findAllCustomer();
 		
 		dynaCustomerListForm.set("customerList", list);
+		
+		/*
+		 * Ajout d'une session pour gérer le Panier
+		 */
+		HttpSession session = request.getSession();
+		Cart cart = new Cart();
+		
+		session.setAttribute("sessionCart", cart);
 	        
 		return mapping.findForward("success");
 	  

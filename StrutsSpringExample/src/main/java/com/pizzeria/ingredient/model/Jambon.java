@@ -12,7 +12,7 @@ public class Jambon extends Ingredient {
 	@Override
 	public float getPrix() {
 		// TODO Auto-generated method stub
-		return (float) 1.0;
+		return prix;
 	}
 	@Override
 	public long getIngredientId() {

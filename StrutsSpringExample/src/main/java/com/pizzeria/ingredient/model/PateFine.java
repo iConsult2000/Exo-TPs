@@ -19,7 +19,7 @@ public class PateFine extends Pates {
 	@Override
 	public float getPrix() {
 		// TODO Auto-generated method stub
-		return (float) 0.5;
+		return prix;
 	}
 
 }
