@@ -1,9 +1,10 @@
 /* Creation de votre utilisateur au préalable */
 
-SET PASSWORD FOR cdsappl@'localhost' = PASSWORD('iConsult2000');
-
 create database ITALIA;
 grant all on ITALIA.* to cdsappl@'localhost';
+SET PASSWORD FOR cdsappl@'localhost' = PASSWORD('iConsult2000');
+
+/* Définition de la table PIZZA */
 
 DROP TABLE IF EXISTS `ITALIA`.`PIZZA` ;
 CREATE TABLE `ITALIA`.`PIZZA` (
@@ -13,6 +14,9 @@ CREATE TABLE `ITALIA`.`PIZZA` (
     PRIMARY KEY (`PIZZA_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+/*
+ * Définition de la table ingrédient
+ */
 DROP TABLE IF EXISTS `ITALIA`.`ingredient` ;
 CREATE TABLE `ITALIA`.`ingredient` (
     `INGREDIENT_ID` BIGINT(20) UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
@@ -21,6 +25,9 @@ CREATE TABLE `ITALIA`.`ingredient` (
     PRIMARY KEY (`INGREDIENT_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+/*
+ * Définition de la table jointure ingredient_pizza
+ */
 DROP TABLE IF EXISTS `ITALIA`.`ingredient_pizza` ;
 CREATE TABLE `ITALIA`.`ingredient_pizza` (
     `INGPIZZA_ID` BIGINT(20) UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
@@ -35,6 +42,9 @@ CREATE TABLE `ITALIA`.`ingredient_pizza` (
     CONSTRAINT `FKINGREDIENT` FOREIGN KEY (`INGREDIENT_REF`) REFERENCES `ingredient` (`INGREDIENT_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+/*
+ * Définition de la table customer
+ */
 DROP TABLE IF EXISTS `ITALIA`.`customer`;
 CREATE TABLE  `ITALIA`.`customer` (
   `CUSTOMER_ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
