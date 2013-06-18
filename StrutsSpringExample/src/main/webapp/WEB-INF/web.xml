@@ -27,7 +27,7 @@
   
     <!-- The Usual Welcome File List -->
   <welcome-file-list>
-    <welcome-file>ListCustomer.do</welcome-file>
+    <welcome-file>Login.do</welcome-file>
   </welcome-file-list>
 
 
