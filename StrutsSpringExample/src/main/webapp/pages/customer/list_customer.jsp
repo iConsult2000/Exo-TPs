@@ -1,3 +1,6 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="pages/css/style.css" />
+
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
@@ -6,29 +9,65 @@
 <head>
 </head>
 <body>
-<h1>Italia Pizzeria</h1>
+<!-- begin header -->
+<div class="menu">
+		<h1>Liste des articles du magasin</h1>
+		<ul>
+			<li>Liste des catégories</li>
+			<li>champ de saisie</li>
+			<li>bouton rechercher</li>
+			
+		</ul>
+		<a href="logout">Fermer la session</a>
 
-<h2>Liste de tous les Pizzas</h2>
+</div>
 
-<table border="1">
-<tr><th>Nom</th><th>Prénom</th><th>Téléphone</th><th>Adresse</th><th>Date de création</th></tr>
+<!-- end header -->
 
-<logic:iterate id="customer" name="dynaCustomerListForm" property="customerList">
-<tr>	
-<td><bean:write name="customer" property="name"/></td>
-<td><bean:write name="customer" property="firstname"/></td>
-<td><bean:write name="customer" property="tel"/></td>
-<td><bean:write name="customer" property="address"/></td>
-<td><bean:write name="customer" property="createdDate"/></td>
+<!-- begin container -->
+<div class="container">
+	<h1>Italia Pizzeria</h1>
+<!-- begin section 1 -->
+	<div class="contents1">
+	
+		<h2>Liste de tous les Pizzas</h2>
+		
+		<table border="1">
+		<tr><th>Nom</th><th>Prénom</th><th>Téléphone</th><th>Adresse</th><th>Date de création</th></tr>
+		
+		<logic:iterate id="customer" name="dynaCustomerListForm" property="customerList">
+		<tr>	
+		<td><bean:write name="customer" property="name"/></td>
+		<td><bean:write name="customer" property="firstname"/></td>
+		<td><bean:write name="customer" property="tel"/></td>
+		<td><bean:write name="customer" property="address"/></td>
+		<td><bean:write name="customer" property="createdDate"/></td>
+		
+		</tr>
+		</logic:iterate> 
+		
+		</table>
+		
+		<br/>
+		<br/>
+		<html:link action="/AddCustomerPage.do">Add Customer</html:link>
+	</div>
+	<!-- end section1 -->
+                
+    <!-- begin section 2 -->
+           <!-- Le panier début -->
+		    <div class="contents2">
+		            <jsp:include page="/pages/customer/mycart_customer.jsp" />
+		    </div>
+            <!-- Le panier fin -->
+    <!-- end section 2 -->
 
-</tr>
-</logic:iterate> 
-
-</table>
-
-<br/>
-<br/>
-<html:link action="/AddCustomerPage.do">Add Customer</html:link>
+ </div>
+ <!-- end container -->
+ 
+ <!-- begin footer -->
+ <div></div>
+ <!-- end footer -->
  
 </body>
 </html>

@@ -1,0 +1,86 @@
+.menu {
+	margin-bottom : 30px;
+}
+
+.menu a{
+	margin-left: 30%;
+}
+.menu li {
+float:left;
+margin-left: 10px;
+list-style-type:none;
+font-size: 1em;
+}
+
+
+.item input {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.item h3 {
+	margin: auto;
+}
+
+.item li {
+	float: left;
+	list-style-type: none;
+	font-size: 1em;
+	text-align: center;
+}
+
+#connexion p {
+	font-size: 14px;
+}
+#connexion label {
+	float:left;
+	width:70px;
+}
+
+
+
+.contents1 {
+	margin-right : 10px;
+	border:1px solid black;
+	width:50%;
+	height:450px;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	/* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 
+16. */
+}
+
+.contents2 {	
+	background-color: #eee;
+	position: absolute;
+	right: 10%;
+	width:35%;
+}
+
+.contents2 table {
+	border :1px;
+	color : red;
+	cellpadding : 0;
+	cellspacing : 0;
+	text-align: center;	
+}
+.container div{
+	float:left;
+}
+.container {
+	position : relative;
+
+
+}
+
+
+.footer{
+	clear:both;
+}
+
+.footer p {
+display:inline-block;
+
+}
+
+
