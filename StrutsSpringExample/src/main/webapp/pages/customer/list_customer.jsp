@@ -8,7 +8,7 @@
 <body>
 <h1>Italia Pizzeria</h1>
 
-<h2>Liste de tous les Clients</h2>
+<h2>Liste de tous les Pizzas</h2>
 
 <table border="1">
 <tr><th>Nom</th><th>Prénom</th><th>Téléphone</th><th>Adresse</th><th>Date de création</th></tr>
