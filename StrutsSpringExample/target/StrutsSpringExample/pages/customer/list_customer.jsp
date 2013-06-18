@@ -11,7 +11,7 @@
 <h2>Liste de tous les Clients</h2>
 
 <table border="1">
-<tr><th>Nom</td><td>Prénom</td><td>Téléphone</td><td>Adresse</td><td>Date de création</td></tr>
+<tr><th>Nom</th><th>Prénom</th><th>Téléphone</th><th>Adresse</th><th>Date de création</th></tr>
 
 <logic:iterate id="customer" name="dynaCustomerListForm" property="customerList">
 <tr>	

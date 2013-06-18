@@ -57,7 +57,7 @@ CREATE TABLE  `ITALIA`.`customer` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /* Jeu de données
- * Cherche volontaire
+ * Steeve + Lory + Manuel
  *  */
 
 
