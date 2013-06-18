@@ -18,7 +18,7 @@
 			<li>bouton rechercher</li>
 			
 		</ul>
-		<a href="logout">Fermer la session</a>
+		<a href="Login.do">Se connecter</a>
 
 </div>
 
