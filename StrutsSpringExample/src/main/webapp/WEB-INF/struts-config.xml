@@ -8,6 +8,9 @@
 	<form-beans>
 		<form-bean name="customerForm"   
 		      type="com.pizzeria.customer.form.CustomerForm" />
+		      
+      	<form-bean name="loginForm"   
+		      type="com.pizzeria.customer.form.LoginForm" />
 		
 		<form-bean name="dynaCustomerListForm"   
 		      type="org.apache.struts.action.DynaActionForm">
@@ -22,6 +25,11 @@
 			path="/AddCustomerPage"
 			type="org.apache.struts.actions.ForwardAction"
 			parameter="/pages/customer/add_customer.jsp"/>
+			
+		<action
+			path="/Login"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/pages/customer/login.jsp"/>
 
 
 		<action
@@ -34,6 +42,18 @@
  
 			<forward name="success" redirect="true" path="/ListCustomer.do"/>
 		</action>
+		
+		<action
+			path="/Authentificate"
+			type="com.pizzeria.customer.action.LoginAction"
+			name="loginForm"
+			validate="true"
+			input="/pages/customer/login.jsp"
+			>	
+ 
+			<forward name="success" redirect="true" path="/ListCustomer.do"/>
+		</action>
+		
 		
 		<action
 			path="/ListCustomer"
