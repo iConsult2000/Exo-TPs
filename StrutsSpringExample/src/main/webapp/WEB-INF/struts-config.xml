@@ -5,12 +5,16 @@
  
 <struts-config>
  
+ <!-- Liste des Formulaires Struts associés au Module -->
 	<form-beans>
 		<form-bean name="customerForm"   
 		      type="com.pizzeria.customer.form.CustomerForm" />
 		      
       	<form-bean name="loginForm"   
 		      type="com.pizzeria.customer.form.LoginForm" />
+		 
+		<form-bean name="cartForm"   
+		      type="com.pizzeria.customer.form.CartForm" />
 		
 		<form-bean name="dynaCustomerListForm"   
 		      type="org.apache.struts.action.DynaActionForm">
@@ -19,19 +23,32 @@
 		
 	</form-beans>
 	
+	<!-- Liste des Actions associées au Module -->
 	<action-mappings>
 
+		<!-- débranchement vers la visualisation Ajout d'un Client -->
 	 	<action
 			path="/AddCustomerPage"
 			type="org.apache.struts.actions.ForwardAction"
 			parameter="/pages/customer/add_customer.jsp"/>
-			
+		
+		<!-- débranchement vers la visualisation Se connecter -->	
 		<action
 			path="/Login"
 			type="org.apache.struts.actions.ForwardAction"
 			parameter="/pages/customer/login.jsp"/>
 
-
+		<!-- débranchement vers la visualisation du contenu détaillé du panier -->
+		<action
+			path="/MyCart"
+			type="com.pizzeria.customer.action.CartAction"
+			name="cartForm"
+			>
+			
+			<forward name="success" path="/pages/customer/showMyCart.jsp/" />
+		</action>	
+		
+		<!-- débranchement vers la visualisation Formulaire Ajout d'un Client -->	
 		<action
 			path="/AddCustomer"
 			type="com.pizzeria.customer.action.AddCustomerAction"
@@ -43,6 +60,7 @@
 			<forward name="success" redirect="true" path="/ListCustomer.do"/>
 		</action>
 		
+		<!-- débranchement vers le Formulaire Connexion -->
 		<action
 			path="/Authentificate"
 			type="com.pizzeria.customer.action.LoginAction"
@@ -54,7 +72,7 @@
 			<forward name="success" redirect="true" path="/ListCustomer.do"/>
 		</action>
 		
-		
+		<!-- débranchement vers la page d'accueil-->
 		<action
 			path="/ListCustomer"
 			type="com.pizzeria.customer.action.ListCustomerAction"

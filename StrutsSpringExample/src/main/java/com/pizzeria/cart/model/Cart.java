@@ -6,7 +6,7 @@ import java.util.Collection;
 import com.pizzeria.pizza.model.*;
 
 public class Cart {
-	private Integer code_user;
+	private long code_user;
 	private Collection<Pizza> listproduit = new ArrayList<Pizza>();
 	
 	public Cart(){
@@ -16,7 +16,7 @@ public class Cart {
 	/**
 	 * @return the code_user
 	 */
-	public Integer getCode_user() {
+	public long getCode_user() {
 		return code_user;
 	}
 
