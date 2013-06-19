@@ -1,14 +1,13 @@
 package com.pizzeria.customer.action;
 
 import java.util.Collection;
-// Import log4j classes.
-import org.apache.log4j.Logger;
-import org.apache.log4j.BasicConfigurator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -30,12 +29,9 @@ public class CartAction extends ActionSupport{
     /* --------------- */
     /* -- ATTRIBUTS -- */
     /* --------------- */
-	 /**
-     * Le logger de la classe.
-     */
 	// Define a static logger variable so that it references the
-	   // Logger instance named "MyApp".
-	   static Logger logger = Logger.getLogger(CartAction.class);
+	// Logger instance named "MyApp".
+	Logger logger = LogManager.getLogger(CartAction.class.getName());
 
 	
 	
@@ -76,7 +72,7 @@ public class CartAction extends ActionSupport{
 		HttpSession session = pRequest.getSession();
 		Cart cart = (Cart) session.getAttribute("sessionCart");
 			
-			
+		/* Simuler l'ajout de Pizza */
 			
 		return pMapping.findForward("success");
 	}
@@ -105,8 +101,7 @@ public class CartAction extends ActionSupport{
 			HttpServletRequest pRequest,HttpServletResponse pResponse) 
 	        throws Exception {
 	 
-			
-			
+				
 			
 			
 			return pMapping.findForward("success");

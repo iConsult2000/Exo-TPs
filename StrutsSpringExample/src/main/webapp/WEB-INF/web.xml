@@ -17,18 +17,13 @@
          /WEB-INF/struts-config.xml
         </param-value>
     </init-param>
-    <load-on-startup>2</load-on-startup>
+   	<init-param>
+		<param-name>log4j-properties-location</param-name>
+		<param-value>WEB-INF/log4j.properties</param-value>
+	</init-param>
+   <load-on-startup>1</load-on-startup>
   </servlet>
  
- 	<servlet>
-		<servlet-name>Log4JInitServlet</servlet-name>
-		<servlet-class>test.Log4JInitServlet</servlet-class>
-		<init-param>
-			<param-name>log4j-properties-location</param-name>
-			<param-value>WEB-INF/log4j.properties</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
   <servlet-mapping>
        <servlet-name>action</servlet-name>
        <url-pattern>*.do</url-pattern>

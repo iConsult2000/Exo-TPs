@@ -58,9 +58,9 @@
                 
     <!-- begin section 2 -->
            <!-- Le panier début -->
-           <!-- Afficher uniquement si le client est authentifié -->
+           <!-- Afficher uniquement si le client est authentifié  sessionTocken = "valide"-->
            <%
-			if((String) session.getAttribute("sessionToken") == "valide") {
+			if((String) session.getAttribute("sessionToken") == "invalide") {
 			%>
 		    <div class="contents2">
 		            <jsp:include page="/pages/customer/mycart_customer.jsp" />

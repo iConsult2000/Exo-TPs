@@ -45,7 +45,7 @@
 			name="cartForm"
 			>
 			
-			<forward name="success" path="/pages/customer/showMyCart.jsp/" />
+			<forward name="success" path="/pages/customer/showMyCart.jsp" />
 		</action>	
 		
 		<!-- débranchement vers la visualisation Formulaire Ajout d'un Client -->	
