@@ -64,23 +64,6 @@ font-size: 1em;
 	cellspacing : 0;
 	text-align: center;	
 }
-.container div{
-	float:left;
-}
-.container {
-	position : relative;
 
-
-}
-
-
-.footer{
-	clear:both;
-}
-
-.footer p {
-display:inline-block;
-
-}
 
 

@@ -9,7 +9,7 @@
 
 <jsp:useBean id="sessionCart" class="com.pizzeria.cart.model.Cart"
 	scope="session" />
-
+<div class="contents2">
 
 	<h5>
 		Mon panier :
@@ -60,3 +60,4 @@
 		</tr>
 
 	</table>
+</div>

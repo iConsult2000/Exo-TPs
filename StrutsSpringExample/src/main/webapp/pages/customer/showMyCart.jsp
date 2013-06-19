@@ -1,48 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 
 
+
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Italia Pizzeria - Votre panier</title>
+<link rel="stylesheet" type="text/css" href="pages/css/index.css" />
+<title>Foody's Pizza</title>
 </head>
 <body>
+<body style="background-color:#999;">
+<div class="page">	
 
-<!-- begin header -->
-
-	<jsp:include page="/pages/customer/menu.jsp" />
-<!-- end header -->
-
-<!-- begin container -->
-<div class="container">
-	<h1>Italia Pizzeria</h1>
-<!-- begin section 1 -->
-	
-                
-    <!-- begin section 2 -->
-           <!-- Le panier début -->
-           <!-- Afficher uniquement si le client est authentifié  sessionTocken = "valide"-->
-           <%
-			if((String) session.getAttribute("sessionToken") == "invalide") {
-			%>
-		    <div class="contents1">
-		            <jsp:include page="/pages/customer/mycart_customer.jsp" />
-		    </div>
-		    <%} %>
-            <!-- Le panier fin -->
-    <!-- end section 2 -->
-
- </div>
- <!-- end container -->
+    <!-- begin header -->
+        <div class="header">
+			<jsp:include page="/pages/customer/menu.jsp" />
+		</div>
+	<!-- end header -->
  
- <!-- begin footer -->
- <div></div>
- <!-- end footer -->
-
-
+    <div class="content">
+    	<div class="left">
+        	
+            <div>
+            	<h3>Meilleure vente de la semaine</h3>
+            	-Pizza calzone<br>
+                -Pizza orentale<br>
+                -Pizza canibale<br>
+            </div>
+        </div>
+        <div class="right">
+        	<h2>Votre panier</h2>		
+			 <jsp:include page="/pages/customer/mycart_customer.jsp" />
+        </div>
+    </div>
+    <div class="footer">By Iconsult2000 2013</div>
+ </div>
 </body>
 </html>

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Foody's Pizza</title>
 </head>
 <body>
 <body style="background-color:#999;">
@@ -37,7 +37,7 @@
         </div>
         <div class="right">
         	<h2>Liste de toutes les pizzas</h2>
-		
+			
 			<table border="1">
 			<tr><th>Nom</th><th>Prix</th></tr>
 			
@@ -53,7 +53,7 @@
 			
 			<br/>
 			<br/>
-			<html:link action="/AddCustomerPage.do">Add Customer</html:link>
+			
         </div>
     </div>
     <div class="footer">By Iconsult2000 2013</div>
