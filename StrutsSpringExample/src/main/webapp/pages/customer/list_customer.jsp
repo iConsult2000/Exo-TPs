@@ -4,6 +4,8 @@
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+
+
  
 <html>
 <head>
@@ -11,7 +13,7 @@
 <body>
 <!-- begin header -->
 <div class="menu">
-		<h1>Liste des articles du magasin</h1>
+		<h1>Banniere d'accueil</h1>
 		<ul>
 			<li>Liste des catégories</li>
 			<li>champ de saisie</li>
@@ -56,9 +58,14 @@
                 
     <!-- begin section 2 -->
            <!-- Le panier début -->
+           <!-- Afficher uniquement si le client est authentifié -->
+           <%
+			if((String) session.getAttribute("sessionToken") == "valide") {
+			%>
 		    <div class="contents2">
 		            <jsp:include page="/pages/customer/mycart_customer.jsp" />
 		    </div>
+		    <%} %>
             <!-- Le panier fin -->
     <!-- end section 2 -->
 

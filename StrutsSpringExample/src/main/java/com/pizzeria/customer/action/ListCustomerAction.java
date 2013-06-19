@@ -36,8 +36,10 @@ public class ListCustomerAction extends ActionSupport{
 		 */
 		HttpSession session = request.getSession();
 		Cart cart = new Cart();
+		String token = "invalide";
 		
 		session.setAttribute("sessionCart", cart);
+		session.setAttribute("sessionToken", token);
 	        
 		return mapping.findForward("success");
 	  
