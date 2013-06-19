@@ -4,5 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 	
+	<bean id="pizzaBo" class="com.pizzeria.pizza.bo.impl.PizzaBoImpl" >
+   		<property name="pizzaDao" ref="pizzaDao" />
+   	</bean>
+ 
+   	<bean id="pizzaDao" class="com.pizzeria.pizza.dao.impl.PizzaDaoImpl" >
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   	</bean>
+	
+	
 	
 </beans>

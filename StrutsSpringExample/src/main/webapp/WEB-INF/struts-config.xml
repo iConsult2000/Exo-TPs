@@ -21,6 +21,11 @@
 		      <form-property name="customerList" type="java.util.List"/>
 		</form-bean>
 		
+		   <form-bean name="dynaPizzaListForm"   
+		      type="org.apache.struts.action.DynaActionForm">
+		      <form-property name="pizzaList" type="java.util.List"/>
+		</form-bean>
+		
 	</form-beans>
 	
 	<!-- Liste des Actions associées au Module -->
@@ -80,6 +85,15 @@
 			>	
  
 			<forward name="success" path="/pages/customer/list_customer.jsp"/>
+		</action>
+		
+		<action
+			path="/ListPizza"
+			type="com.pizzeria.pizza.action.ListPizzaAction"
+			name="dynaPizzaListForm"
+			>	
+ 
+			<forward name="success" path="/pages/pizza/list_pizza.jsp"/>
 		</action>
 		
 		

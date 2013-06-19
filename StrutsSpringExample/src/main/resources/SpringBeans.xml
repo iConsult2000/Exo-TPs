@@ -9,6 +9,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
  
 	<!-- Beans Declaration -->
 	<import resource="com/pizzeria/customer/spring/CustomerBean.xml"/>
+	<import resource="com/pizzeria/pizza/spring/PizzaBean.xml"/>
 	
  
 </beans>

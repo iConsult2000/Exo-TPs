@@ -5,7 +5,7 @@
  
 <hibernate-mapping package="com.pizzeria.pizza.model">
  
-    <class name="Pizza" table="PIZZA" schema="mkyong"> 
+    <class name="Pizza" table="PIZZA" schema="ITALIA"> 
     
     	<id name="pizzaId" type="long" column="PIZZA_ID">
 			<generator class="identity"/>

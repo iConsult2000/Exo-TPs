@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import com.pizzeria.ingredient.model.Ingredient;
 
 
-public abstract class Pizza {
+@SuppressWarnings("serial")
+public abstract class Pizza implements java.io.Serializable {
 	
 	protected long pizzaId;
 	protected String nom;

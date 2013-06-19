@@ -31,7 +31,7 @@
   
     <!-- The Usual Welcome File List -->
   <welcome-file-list>
-    <welcome-file>Login.do</welcome-file>
+   <welcome-file>ListPizza.do</welcome-file>
   </welcome-file-list>
 
 
