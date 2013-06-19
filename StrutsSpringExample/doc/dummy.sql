@@ -132,6 +132,28 @@ insert into ingredient_pizza values('','Boeuf','Pizza Bresaola et Roquette','10'
 insert into ingredient_pizza values('','PateFine','Pizza Bresaola et Roquette','16','16');
 
 
+/*
+ * MISE A JOUR OBLIGATOIRE
+ */
+
+
+update PIZZA set NOM = '4frommages' where PIZZA_ID = 10;
+update PIZZA set NOM = 'Oriental' where PIZZA_ID = 11;
+update PIZZA set NOM = 'Végétarienne' where PIZZA_ID = 12;
+update PIZZA set NOM = 'Margherita' where PIZZA_ID = 13;
+
+update PIZZA set PRIX = '12' where PIZZA_ID = 10;
+update PIZZA set PRIX = '14' where PIZZA_ID = 11;
+update PIZZA set PRIX = '12' where PIZZA_ID = 12;
+update PIZZA set PRIX = '11' where PIZZA_ID = 13;
+
+update ingredient_pizza set NOM_PIZZA = '4frommages' where PIZZA_REF = 10;
+update ingredient_pizza set NOM_PIZZA = 'Oriental' where PIZZA_REF = 11;
+update ingredient_pizza set NOM_PIZZA = 'Végétarienne' where PIZZA_REF = 12;
+update ingredient_pizza set NOM_PIZZA = 'Margherita' where PIZZA_REF = 13;
+
+delete from PIZZA where PIZZA_ID in (16, 15,14);
+delete from ingredient_pizza where PIZZA_REF in (16, 15,14);
 
 /*  Table de conversion des types MySQL vers les classes Java
 http://dev.mysql.com/doc/refman/5.0/en/connector-j-reference-type-conversions.html */
