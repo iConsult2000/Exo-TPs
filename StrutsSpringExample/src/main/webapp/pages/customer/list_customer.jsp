@@ -26,7 +26,7 @@
          
              <!-- start section 1 -->
            <%
-			if((String) session.getAttribute("sessionToken") == "invalide") {
+			if((String) session.getAttribute("sessionToken") == "valide") {
 			%>
 			
     	<div class="left">

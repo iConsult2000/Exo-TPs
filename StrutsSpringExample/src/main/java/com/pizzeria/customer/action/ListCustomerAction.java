@@ -31,15 +31,7 @@ public class ListCustomerAction extends ActionSupport{
 		
 		dynaCustomerListForm.set("customerList", list);
 		
-		/*
-		 * Ajout d'une session pour gérer le Panier
-		 */
-		HttpSession session = request.getSession();
-		Cart cart = new Cart();
-		String token = "invalide";
 		
-		session.setAttribute("sessionCart", cart);
-		session.setAttribute("sessionToken", token);
 	        
 		return mapping.findForward("success");
 	  

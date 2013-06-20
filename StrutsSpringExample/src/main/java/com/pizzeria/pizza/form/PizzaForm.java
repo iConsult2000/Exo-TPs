@@ -12,7 +12,7 @@ import org.apache.struts.action.ActionMessage;
 @SuppressWarnings("serial")
 public class PizzaForm  extends ActionForm{
 	
-	
+
 	protected String nom;
 	protected float prix;
 	//protected ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();

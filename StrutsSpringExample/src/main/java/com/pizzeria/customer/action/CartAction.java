@@ -1,5 +1,6 @@
 package com.pizzeria.customer.action;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.struts.ActionSupport;
 import com.pizzeria.cart.model.Cart;
 import com.pizzeria.customer.bo.CustomerBo;
 import com.pizzeria.customer.model.Customer;
+import com.pizzeria.pizza.bo.PizzaBo;
 import com.pizzeria.pizza.model.Pizza;
 
 public class CartAction extends ActionSupport{
@@ -71,8 +73,27 @@ public class CartAction extends ActionSupport{
 		logger.debug("Traitement du Panier en session");	
 		HttpSession session = pRequest.getSession();
 		Cart cart = (Cart) session.getAttribute("sessionCart");
-			
-		/* Simuler l'ajout de Pizza */
+		Collection<Pizza> myListPizza = (cart.getListproduit() != null ? cart.getListproduit() : new ArrayList<Pizza>());
+		
+		/* La recherche */
+		String nameToFind = "Pizza" + pRequest.getParameter("nomArticle");
+		
+		/*Retrouvez la pizza et l'ajouter */
+		PizzaBo pizzaBo =
+				(PizzaBo) getWebApplicationContext().getBean("pizzaBo");
+		for (Pizza p : pizzaBo.findAllPizza()){
+			if (p.getNom().equals(pRequest.getParameter("nomArticle"))) {
+				myListPizza.add(p);
+			}
+		}
+		
+		/*Affecter la nouvelle liste de pizza*/
+		cart.setListproduit(myListPizza);
+		
+		/* Ajout de Pizza */
+		session.setAttribute("sessionCart", cart);
+		String sessionListPizza = "";
+		session.setAttribute("sessionListPizza", myListPizza);
 			
 		return pMapping.findForward("success");
 	}

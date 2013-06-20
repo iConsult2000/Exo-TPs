@@ -53,6 +53,19 @@
 			<forward name="success" path="/pages/customer/showMyCart.jsp" />
 		</action>	
 		
+		
+		
+		<!-- Appel de l'action ajouter au panier -->
+		<action
+			path="/addArticle"
+			type="com.pizzeria.customer.action.CartAction"
+			name="cartForm"
+			input="/pages/customer/list_pizza.jsp"
+			>
+			
+			<forward name="success" path="/pages/customer/showMyCart.jsp" />
+		</action>
+		
 		<!-- débranchement vers la visualisation Formulaire Ajout d'un Client -->	
 		<action
 			path="/AddCustomer"

@@ -30,6 +30,7 @@
                 -Pizza orentale<br>
                 -Pizza canibale<br>
             </div>
+             <jsp:include page="/pages/pizza/showallpizza.jsp" />
         </div>
         <div class="right">
         	<h2>Votre panier</h2>		

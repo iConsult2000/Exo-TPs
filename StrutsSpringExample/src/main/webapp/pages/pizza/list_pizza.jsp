@@ -36,20 +36,7 @@
             </div>
         </div>
         <div class="right">
-        	<h2>Liste de toutes les pizzas</h2>
-			
-			<table border="1">
-			<tr><th>Nom</th><th>Prix</th></tr>
-			
-			<logic:iterate id="pizza" name="dynaPizzaListForm" property="pizzaList">
-			<tr>	
-			<td><bean:write name="pizza" property="nom"/></td>
-			<td><bean:write name="pizza" property="prix"/></td>
-			
-			</tr>
-			</logic:iterate> 
-			
-			</table>
+        	<jsp:include page="/pages/pizza/showallpizza.jsp" />
 			
 			<br/>
 			<br/>
