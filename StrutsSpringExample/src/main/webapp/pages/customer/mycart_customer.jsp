@@ -25,8 +25,10 @@
 			<th>Remise</th>
 		</tr>
 		<%
+			float montant = 0;
 			if (sessionCart.getListproduit().size() > 0) {
 				for (Pizza produit : sessionCart.getListproduit()) {
+					montant = montant + produit.getPrix();
 		%>
 		<tr>
 			<td><a href=removeArticle?numeroArticle=<%=produit.getPizzaId()%>><%=produit.getPizzaId()%></a></td>
@@ -42,7 +44,7 @@
 		%>
 		<tr>
 			<td>Total</td>
-			<td>non implemente</td>
+			<td><%=montant %></td>
 
 		</tr>
 		<tr>
