@@ -43,7 +43,10 @@ public class ListPizzaAction extends ActionSupport {
 			
 			session.setAttribute("sessionCart", cart);
 			if (session.getAttribute("sessionToken") != null && ((String) session.getAttribute("sessionToken")).equals("valide")){		
-				
+				if ((request.getParameter("endSession") !=null && request.getParameter("endSession").equals("true"))) {
+					session.setAttribute("sessionToken", token);
+					session.setAttribute("sessionCart", null);
+				}
 			}else {
 				session.setAttribute("sessionToken", token);
 			}

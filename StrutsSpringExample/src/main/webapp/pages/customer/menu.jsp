@@ -10,7 +10,7 @@
 		    <html:link action="/AddCustomerPage.do">Cr&eacute;ez un compte</html:link>
 		   <% } else { %>
 		   <a href="ListCustomer.do">Vos informations personnelles</a><br/>
-		    <a href="Logout.do">Fermer la session</a>
+		    <a href="Logout.do?endSession=true">Fermer la session</a>
 		    <% } %>
 		    
 		    

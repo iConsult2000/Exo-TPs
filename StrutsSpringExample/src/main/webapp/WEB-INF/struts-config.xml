@@ -42,7 +42,17 @@
 			path="/Login"
 			type="org.apache.struts.actions.ForwardAction"
 			parameter="/pages/customer/login.jsp"/>
-
+			
+		<!-- débranchement vers la visualisation Sdéconnexion -->	
+		<action
+			path="/Logout"
+			type="com.pizzeria.pizza.action.ListPizzaAction"
+			name="dynaPizzaListForm"
+			>	
+ 
+			<forward name="success" path="/pages/pizza/list_pizza.jsp"/>
+		</action>
+		
 		<!-- débranchement vers la visualisation du contenu détaillé du panier -->
 		<action
 			path="/MyCart"

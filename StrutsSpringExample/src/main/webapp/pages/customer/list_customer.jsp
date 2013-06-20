@@ -35,7 +35,7 @@
 						<th>Nom</th>
 						<th>Prénom</th>
 						<th>Téléphone</th>
-						<th>Adresse</th>
+						<thLogout.do?endSession=>Adresse</th>
 						<th>Date de création</th>
 					</tr>
 
