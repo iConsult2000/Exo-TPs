@@ -12,7 +12,6 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
 import org.springframework.web.struts.ActionSupport;
 
-
 import com.pizzeria.cart.model.Cart;
 import com.pizzeria.pizza.bo.PizzaBo;
 import com.pizzeria.pizza.model.Pizza;

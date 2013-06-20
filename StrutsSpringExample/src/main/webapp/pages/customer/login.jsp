@@ -11,22 +11,22 @@
 	<html:errors/>
 </div>
 
-<html:form action="/Authentificate.do">
+<form method="POST" action='<%= response.encodeURL("j_security_check") %>'>
 
 <div style="padding:16px">
 	<div style="float:left;width:100px;">
-		<bean:message key="customer.label.name" /> : 
+		Nom d'utilisateur : 
 	</div> 
  
-	<html:text property="name" size="40" maxlength="20"/>
+	<input type="text" name="j_username">
 </div>
 
 <div style="padding:16px">
 	<div style="float:left;width:100px;">
-		<bean:message key="customer.label.firstname" /> : 
+		Mot de passe : 
 	</div> 
  
-	<html:text property="firstname" size="40" maxlength="20"/>
+	<input type="password" name="j_password">
 </div>
  
 <div style="padding:16px">
@@ -40,7 +40,7 @@
      </html:reset>
 </div>
  
-</html:form>
+</form>
  
 </body>
 </html>

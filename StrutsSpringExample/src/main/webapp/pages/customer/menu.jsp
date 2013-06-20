@@ -6,7 +6,7 @@
 <!-- begin menu -->
 				
 		 <% if((String) session.getAttribute("sessionToken") == "invalide") { %>
-		    <a href="Login.do">Se connecter</a>
+		    <a href="MyCart.do">Se connecter</a>
 		    <html:link action="/AddCustomerPage.do">Cr&eacute;ez un compte</html:link>
 		   <% } else { %>
 		   <a href="ListCustomer.do">Vos informations personnelles</a><br/>
