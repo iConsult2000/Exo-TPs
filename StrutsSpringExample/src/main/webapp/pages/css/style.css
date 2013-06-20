@@ -50,20 +50,7 @@ font-size: 1em;
 16. */
 }
 
-.contents2 {	
-	background-color: #eee;
-	position: absolute;
-	right: 10%;
-	width:35%;
-}
 
-.contents2 table {
-	border :1px;
-	color : red;
-	cellpadding : 0;
-	cellspacing : 0;
-	text-align: center;	
-}
 
 
 

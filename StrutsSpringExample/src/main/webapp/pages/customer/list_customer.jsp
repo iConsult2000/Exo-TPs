@@ -30,7 +30,20 @@
 			%>
 			
     	<div class="left">
-				<table border="1">
+				
+			<div>
+            	<h3>Meilleure vente de la semaine</h3>
+            	-Pizza calzone<br>
+                -Pizza orentale<br>
+                -Pizza canibale<br>
+            </div>
+			</div>
+       <!-- end section1 -->
+                
+    <!-- begin section 2 -->
+         <div class="right">
+         <div>
+        	<table border="Opx" cellspacing="0px" cellspading="0px">
 					<tr>
 						<th>Nom</th>
 						<th>Prénom</th>
@@ -53,12 +66,8 @@
 
 				</table>
 			</div>
-       <!-- end section1 -->
-                
-    <!-- begin section 2 -->
-         <div class="right">
-        	<jsp:include page="/pages/customer/mycart_customer.jsp" />
-
+			<br>
+			<div><a href="MyCart.do">Consulter mon panier</a></div>
         </div>
    <!-- end section 2 -->    
            <%} %>
