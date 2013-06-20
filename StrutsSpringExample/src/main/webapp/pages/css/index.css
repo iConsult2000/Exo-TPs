@@ -10,7 +10,6 @@
 	}
 	
 
-
 .header{
 	background-image:url(img/header.png);
 	width:932px;
@@ -32,6 +31,7 @@
 	width:612px;
 	float:right;
 	height:300px;
+	margin-top:40px;
 	}
 
 .footer{
